@@ -56,10 +56,23 @@ var ad = [
 //console.log(ad[0].book1.display()); // the value returned by display
 //ad[0].book1.display();
 // display the All tab
+// let a: string;
 // for (var i = 0; i < ad.length; i++) {
-//     let show: string = ad[i].display();
-//     document.getElementById("all").innerHTML += show;
+//     if(i<3) {
+//         a = ad[i].book1.display();
+//         document.getElementById("all").innerHTML += a;
+//     }
+//     else if(i<6 && i>2) {
+//         a = ad[i].car1.display();
+//         document.getElementById("all").innerHTML += a;
+//     }
+//     else {
+//         a = ad[i].mobile1.display();
+//         document.getElementById("all").innerHTML += a;
+//     }
 // }
+console.log(ad);
+//  document.getElementById("all").innerHTML += ;
 // display the Books tab
 var showBook;
 for (var i = 0; i <= 2; i++) {
@@ -98,3 +111,4 @@ for (var i = 6; i <= 8; i++) {
 }
 // var show : string = ad[0].book1.display();
 // document.getElementById("books").innerHTML += show; 
+//# sourceMappingURL=ads.js.map

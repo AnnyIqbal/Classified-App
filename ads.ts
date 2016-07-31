@@ -81,14 +81,29 @@ var ad : any[] = [
 //ad[0].book1.display();
 
 // display the All tab
+// let a: string;
 // for (var i = 0; i < ad.length; i++) {
-//     let show: string = ad[i].display();
-//     document.getElementById("all").innerHTML += show;
+//     if(i<3) {
+//         a = ad[i].book1.display();
+//         document.getElementById("all").innerHTML += a;
+//     }
+//     else if(i<6 && i>2) {
+//         a = ad[i].car1.display();
+//         document.getElementById("all").innerHTML += a;
+//     }
+//     else {
+//         a = ad[i].mobile1.display();
+//         document.getElementById("all").innerHTML += a;
+//     }
 // }
+console.log(ad);
+
+      //  document.getElementById("all").innerHTML += ;
+
 
 // display the Books tab
 let showBook : string;
-for(var i = 0; i <= 2; i++) {
+for(var i = 0; i <= 2; i++) { //both vars are working
     showBook = ad[i].book1.display();
     // showBook = "Title : " + ad[i].book1.title + 
     //                             "<br /> Author : " + ad[i].book1.author + 
