@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Classified App </title>
+        <meta charset="UTF-08" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--To ensure proper rendering and touch zooming-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src='https://cdn.firebase.com/js/client/2.4.2/firebase.js'>
+            var Firebase = require("firebase");
+        </script> <!--firebase cdn for deployment-->
+
+        <!-- bootstrap cdn links -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <!-- bootstrap cdn links ended -->
+        <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+        <link href="design.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+        <div>
+            <!--Navigation Tabs-->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#all" aria-controls="all" role="tab" data-toggle="tab">All</a>
+                </li>
+                <li role="presentation">
+                    <a href="#books" aria-controls="books" role="tab" data-toggle="tab">Books</a>
+                </li>
+                <li role="presentation">
+                    <a href="#cars" aria-controls="cars" role="tab" data-toggle="tab">Cars</a>
+                </li>
+                <li role="presentation">
+                    <a href="#mobiles" aria-controls="mobiles" role="tab" data-toggle="tab">Mobiles</a>
+                </li>
+            </ul>
+
+            <!--Tab panes-->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="all">text for all ads</div>
+                <div role="tabpanel" class="tab-pane fade" id="books">text for books</div>
+                <div role="tabpanel" class="tab-pane fade" id="cars">text for cars</div>
+                <div role="tabpanel" class="tab-pane fade" id="mobiles">text for mobiles</div>
+            </div>
+        </div>
+        <script src="ads.js"> </script>
+    </body>
+</html>
