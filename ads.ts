@@ -87,9 +87,7 @@ var ad : any[] = [ // hard coded array for ad listings
 //alert(ad[0].x.display()); // the value returned by display
 
 // alert(ad[0] instanceof Books); //false
-//alert(ad[0].book instanceof Books); //true
-//alert(ad[4].x instanceof Books); //true for the later array
-//alert(typeof ad[0].x); // object     
+//alert(ad[4].x instanceof Books); //true 
 
 //alert(ad[0].x.cName); // yupieeeeee i got it !! :D className mil gya i.e. Books
 
