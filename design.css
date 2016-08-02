@@ -1,0 +1,15 @@
+body {
+    width: 1000px;
+    margin: 0 auto;
+}
+h1 {
+    text-align: center;
+}
+figure img {
+    height: 100px;
+    width: 100px;
+}
+.jumbotron {
+    background-color: black;
+    color: white;
+}

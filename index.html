@@ -3,28 +3,71 @@
     <head>
         <title> Classified App </title>
         <meta charset="UTF-08" />
-
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--To ensure proper rendering and touch zooming-->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--To ensure proper rendering and touch zooming, using meta tag-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        
+<!--firebase cdn for deployment-->
         <script src='https://cdn.firebase.com/js/client/2.4.2/firebase.js'>
             var Firebase = require("firebase");
-        </script> <!--firebase cdn for deployment-->
+        </script>
 
-        <!-- bootstrap cdn links -->
+<!-- bootstrap cdn links -->
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <!-- bootstrap cdn links ended -->
+<!-- bootstrap cdn links ended -->
+
         <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-
-        <link href="design.css" type="text/css" rel="stylesheet" />
+ 
+        <link href="design.css" type="text/css" rel="stylesheet" /><!-- css file linked -->
     </head>
-    <body>
+
+    <body class="scaffolding.less" data-spy="scroll" data-target=".navbar" data-offset="50">
+        <div class="container-fluid">
+<!--Jumbotron from bootstrap-->
+        <div class="jumbotron">
+            <h1>Classified App</h1>
+            <div id="categories" class="row" role="tablist"> <!-- contains main category images -->
+                <div class="col-sm-2" role="presentation">
+                    <figure> 
+                        <a href="#books" aria-controls="books" role="tab" data-toggle="tab">
+                            <img src="Images/b1.png" alt="books" class="img-responsive center-block" />
+                        </a>
+                        <figcaption class="text-center hidden">
+                            Books
+                            <!--<a href="#books" aria-controls="books" role="tab" data-toggle="tab">Books</a>-->
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2" role="presentation">
+                    <figure>
+                        <a href="#cars" aria-controls="cars" role="tab" data-toggle="tab">
+                            <img src="Images/c6.png" alt="cars" class="img-responsive center-block" />
+                        </a>
+                        <figcaption class="text-center hidden">
+                            Cars
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="col-sm-2" role="presentation">
+                    <figure>
+                        <a href="#mobiles" aria-controls="mobiles" role="tab" data-toggle="tab">
+                            <img src="Images/m1.png" alt="mobiles" class="img-responsive center-block" />
+                        </a>
+                        <figcaption class="text-center hidden">
+                            Mobiles
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>   <!-- /category images -->
+        </div> 
+<!-- /.Jumbotron -->
+
+<!-- Navigation Tabs-->     
         <div>
-            <!--Navigation Tabs-->
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active">
                     <a href="#all" aria-controls="all" role="tab" data-toggle="tab">All</a>
@@ -40,14 +83,25 @@
                 </li>
             </ul>
 
-            <!--Tab panes-->
+            <!--Tab Panes-->
             <div class="tab-content">
-                <div role="tabpanel" class="tab-pane fade in active" id="all">text for all ads</div>
-                <div role="tabpanel" class="tab-pane fade" id="books">text for books</div>
-                <div role="tabpanel" class="tab-pane fade" id="cars">text for cars</div>
-                <div role="tabpanel" class="tab-pane fade" id="mobiles">text for mobiles</div>
+                <div role="tabpanel" class="tab-pane fade in active" id="all">
+                    <h1> All Ads </h1>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="books">
+                    <h1> Books </h1>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="cars">
+                    <h1> Cars </h1>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="mobiles">
+                    <h1> Mobiles </h1>
+                </div>
             </div>
         </div>
-        <script src="ads.js"> </script>
+<!--/Navigation Tabs-->
+        </div> <!-- /.container-fluid -->
+        <!--Javascript generated by typescript transpiler is linked-->
+        <script src="ads.js"> </script> 
     </body>
 </html>
