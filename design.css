@@ -4,12 +4,21 @@ body {
 }
 h1 {
     text-align: center;
+    text-transform: uppercase;
 }
 figure img {
     height: 100px;
     width: 100px;
 }
 .jumbotron {
-    background-color: black;
+    background-image: url("Images/bg0.jpg");
+    background-size: 100% 100%; /* Image will stretch to cover entire content area */
+    background-repeat: no-repeat;
+    font-size: larger;
     color: white;
 }
+li a img {
+    height: 50px;
+    width: 50px;
+}
+
