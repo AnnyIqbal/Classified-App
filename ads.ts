@@ -102,7 +102,7 @@ for (var i = 0; i < ad.length; i++) {
             a = '<div class="panel panel-primary">' +
                         '<div class="panel-heading">' +
                             '<h3 class="panel-title">' + //title
-                                + ad[i].x.subject + 
+                                ad[i].x.subject + 
                             '</h3>' +
                         '</div>' +
                         '<div class="panel-body row">'+
@@ -115,8 +115,15 @@ for (var i = 0; i < ad.length; i++) {
                         '</div>' +
                         '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
                     '</div>'; // creates new panel for book
-
-            document.getElementById("all").innerHTML += a;
+            if(i<3) {
+                document.getElementById("p1").innerHTML += a;
+            }
+            else if(i>2 && i<6) {
+                document.getElementById("p2").innerHTML += a;
+            }
+            else if(i>5) {
+                document.getElementById("p3").innerHTML += a;
+            }
             break;
         }
         case 'Cars' : {
@@ -136,8 +143,15 @@ for (var i = 0; i < ad.length; i++) {
                         '</div>' +
                         '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
                     '</div>'; // creates new panel for car
-
-            document.getElementById("all").innerHTML += a;
+            if(i<3) {
+                document.getElementById("p1").innerHTML += a;
+            }
+            else if(i>2 && i<6) {
+                document.getElementById("p2").innerHTML += a;
+            }
+            else if(i>5) {
+                document.getElementById("p3").innerHTML += a;
+            }
             break;
         }
         case 'Mobiles' : {
@@ -157,8 +171,15 @@ for (var i = 0; i < ad.length; i++) {
                         '</div>' +
                         '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
                     '</div>';  // creates new panel for mobile
-
-            document.getElementById("all").innerHTML += a;
+            if(i<3) {
+                document.getElementById("p1").innerHTML += a;
+            }
+            else if(i>2 && i<6) {
+                document.getElementById("p2").innerHTML += a;
+            }
+            else if(i>5) {
+                document.getElementById("p3").innerHTML += a;
+            }
             break;
         }
         default: {
@@ -243,5 +264,43 @@ for(var i = 0; i < ad.length; i++) {
                         '</div>'; // creating new panel with title and content for mobile
 
         document.getElementById("mobiles").innerHTML += showMobile;
+    }
+}
+
+function activatePage(id: string, tag: HTMLElement): void { // pagination activation function
+    switch(id) {
+        case 'p1': {
+            tag.parentElement.setAttribute("class", "active"); // set .active for #p1
+            tag.parentElement.nextElementSibling.removeAttribute("class"); // remove .active from #p2
+            tag.parentElement.nextElementSibling.nextElementSibling.removeAttribute("class"); // remove .active from #p3
+
+            document.getElementById(id).className = "show"; // set .show for #p1
+            document.getElementById("p2").className = "hidden"; //hide #p2
+            document.getElementById("p3").className = "hidden"; //hide #p3
+            break;
+        }
+         case 'p2': {
+            tag.parentElement.setAttribute("class", "active"); // set .active for #p2
+            tag.parentElement.nextElementSibling.removeAttribute("class"); // remove .active from #p3
+            tag.parentElement.previousElementSibling.removeAttribute("class"); // remove .active from #p1
+
+            document.getElementById(id).className = "show"; // set .show for #p2
+            document.getElementById("p1").className = "hidden"; //hide #p1
+            document.getElementById("p3").className = "hidden"; //hide #p3
+            break;
+        }
+         case 'p3': {
+            tag.parentElement.setAttribute("class", "active"); // set .active for #p3
+            tag.parentElement.previousElementSibling.removeAttribute("class"); // remove .active from #p2
+            tag.parentElement.previousElementSibling.previousElementSibling.removeAttribute("class"); // remove .active from #p3
+
+            document.getElementById(id).className = "show"; // set .show for #p3
+            document.getElementById("p1").className = "hidden"; //hide #p1
+            document.getElementById("p2").className = "hidden"; //hide #p2
+            break;
+        }
+        default: {
+            alert("Error!");
+        }
     }
 }
