@@ -1,18 +1,29 @@
-class Books { 
-    cName : string = "Books";
+/**
+ * Ads
+ */
+class Ads {
+    cName : string;
+    price: number;
+    image: string;
+
+    constructor(priceOfObject: number, imageOfObject: string) {
+        this.price = priceOfObject;
+        this.image = imageOfObject;
+    }
+}
+
+class Books extends Ads{ 
+    cName = "Books";
     title : string;
     author : string;
     subject : string;
-    price : number;
-    image : string;
     
     // constructor automatically assigns the argument values to class attributes whenever a new instance is generated
     constructor(titleOfBook: string, authorOfBook: string, subjectOfBook: string, priceOfBook: number, img: string) {
+        super(priceOfBook, img);
         this.title = titleOfBook;
         this.author = authorOfBook;
         this.subject = subjectOfBook;
-        this.price = priceOfBook;
-        this.image = img;
     }
 
     display(): string { //returns all attributes with html wrapping
@@ -20,24 +31,21 @@ class Books {
     }
 }
 
-class Cars {
-    cName : string = "Cars";
+class Cars extends Ads {
+    cName = "Cars";
     name : string;
     company : string;
     model : number;
     engine: number;
     color:string;
-    price: number;
-    image : string;
 
     constructor(nameOfCar: string, companyOfCar: string, modelOfCar: number, engineOfCar: number, colorOfCar: string, priceOfCar: number, img: string) {
+        super(priceOfCar, img);
         this.name = nameOfCar;
         this.company = companyOfCar;
         this.model = modelOfCar;
         this.engine = engineOfCar;
         this.color = colorOfCar;
-        this.price = priceOfCar;
-        this.image = img;
     }
 
     display(): string { //returns all attributes with html wrapping
@@ -45,16 +53,15 @@ class Cars {
     }
 }
 
-class Mobiles {
-    cName : string = "Mobiles";
+class Mobiles extends Ads {
+    cName = "Mobiles";
     model: string;
     company: string;
     color: string;
     screenSize: number;
-    price: number;
-    image : string;
 
     constructor(modelOfMobile: string, companyOfMobile: string, colorOfMobile: string, screenSizeOfMobile: number, priceOfMobile: number, img: string) {
+        super(priceOfMobile, img);
         this.model = modelOfMobile;
         this.company = companyOfMobile;
         this.color = colorOfMobile;

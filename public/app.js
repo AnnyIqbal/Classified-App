@@ -1,36 +1,53 @@
-var Books = (function () {
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+/**
+ * Ads
+ */
+var Ads = (function () {
+    function Ads(priceOfObject, imageOfObject) {
+        this.price = priceOfObject;
+        this.image = imageOfObject;
+    }
+    return Ads;
+}());
+var Books = (function (_super) {
+    __extends(Books, _super);
     // constructor automatically assigns the argument values to class attributes whenever a new instance is generated
     function Books(titleOfBook, authorOfBook, subjectOfBook, priceOfBook, img) {
+        _super.call(this, priceOfBook, img);
         this.cName = "Books";
         this.title = titleOfBook;
         this.author = authorOfBook;
         this.subject = subjectOfBook;
-        this.price = priceOfBook;
-        this.image = img;
     }
     Books.prototype.display = function () {
         return ("<strong> Title: </strong> " + this.title + "<br /> <strong> Author: </strong>" + this.author + "<br /> <strong> Subject: </strong>" + this.subject);
     };
     return Books;
-}());
-var Cars = (function () {
+}(Ads));
+var Cars = (function (_super) {
+    __extends(Cars, _super);
     function Cars(nameOfCar, companyOfCar, modelOfCar, engineOfCar, colorOfCar, priceOfCar, img) {
+        _super.call(this, priceOfCar, img);
         this.cName = "Cars";
         this.name = nameOfCar;
         this.company = companyOfCar;
         this.model = modelOfCar;
         this.engine = engineOfCar;
         this.color = colorOfCar;
-        this.price = priceOfCar;
-        this.image = img;
     }
     Cars.prototype.display = function () {
         return ("<strong> Name: </strong>" + this.name + "<br /> <strong> Company: </strong>" + this.company + "<br /> <strong> Model: </strong>" + this.model + "<br /> <strong> Engine: </strong> " + this.engine + "cc <br /> <strong> Color: </strong>" + this.color);
     };
     return Cars;
-}());
-var Mobiles = (function () {
+}(Ads));
+var Mobiles = (function (_super) {
+    __extends(Mobiles, _super);
     function Mobiles(modelOfMobile, companyOfMobile, colorOfMobile, screenSizeOfMobile, priceOfMobile, img) {
+        _super.call(this, priceOfMobile, img);
         this.cName = "Mobiles";
         this.model = modelOfMobile;
         this.company = companyOfMobile;
@@ -43,7 +60,7 @@ var Mobiles = (function () {
         return ("<strong> Model: </strong>" + this.model + "<br /> <strong> Company: </strong>" + this.company + "<br /> <strong> Color: </strong>" + this.color + "<br /> <strong> Screen Size: </strong>" + this.screenSize);
     };
     return Mobiles;
-}());
+}(Ads));
 // var book1 = new Books("HTML", "Ducket", "HTML", 1200); // creating new instance (i.e.object) of a class
 var ad = [
     { x: new Books("HTML & CSS", "Jon Duckett", "HTML & CSS", 200, "Images/htmlcss.png") },
