@@ -58,7 +58,32 @@ var Mobiles = (function (_super) {
     };
     return Mobiles;
 }(Ads));
-// var book1 = new Books("HTML", "Ducket", "HTML", 1200); // creating new instance (i.e.object) of a class
+;
+//     book: {
+//         title: string,
+//         author: string,
+//         subject: string,
+//         price: number,
+//         src: string
+//     },
+//     car: {
+//         name: string,
+//         company: string,
+//         model: number,
+//         engine: number,
+//         color: string,
+//         price: number,
+//         src: string
+//     },
+//     mobile: {
+//         model: string,
+//         company: string,
+//         color: string,
+//         screenSize: number,
+//         price: number,
+//         src: string
+//     };
+// }
 var ad = [
     { x: new Books("HTML & CSS", "Jon Duckett", "HTML & CSS", 200, "Images/htmlcss.png") },
     { x: new Books("Git Essentials", "Ferdinando Santacroce", "Git", 700, "Images/git.png") },
@@ -171,7 +196,7 @@ function pushAd() {
             var subject = document.getElementById("subject").value;
             var price = document.getElementById("Bprice").value;
             var image = document.getElementById("Bimage").value;
-            //creating new Book instance and pushing dynamically in the ad array
+            //creating new Books instance and pushing dynamically in the ad array
             ad.push(new Books(title, author, subject, price, image));
             break;
         }
@@ -184,7 +209,7 @@ function pushAd() {
             var color = document.getElementById("Ccolor").value;
             var price = document.getElementById("Cprice").value;
             var image = document.getElementById("Cimage").value;
-            //creating new Book instance and pushing dynamically in the ad array
+            //creating new Cars instance and pushing dynamically in the ad array
             ad.push(new Cars(name_1, company, model, engine, color, price, image));
             break;
         }
@@ -196,7 +221,7 @@ function pushAd() {
             var screenSize = document.getElementById("screensize").value;
             var price = document.getElementById("Mprice").value;
             var image = document.getElementById("Mimage").value;
-            //creating new Book instance and pushing dynamically in the ad array
+            //creating new Mobiles instance and pushing dynamically in the ad array
             ad.push(new Mobiles(model, company, color, screenSize, price, image));
             break;
         }
@@ -205,7 +230,6 @@ function pushAd() {
         }
     }
 }
-console.log(ad);
 // display the All tab
 var a;
 for (var i = 0; i < ad.length; i++) {
@@ -409,3 +433,5 @@ function activatePage(id, tag) {
         }
     }
 }
+alert(ad); //push hua bi hai k ni
+alert(ad.length); //9 means push ni hora y??

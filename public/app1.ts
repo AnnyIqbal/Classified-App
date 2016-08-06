@@ -75,7 +75,7 @@ class Mobiles extends Ads {
 // var book1 = new Books("HTML", "Ducket", "HTML", 1200); // creating new instance (i.e.object) of a class
 
 interface arrayOfObj {
-    [x: string]: Books | Cars | Mobiles 
+    [x: string]: Books | Cars | Mobiles; 
 };
 //     book: {
 //         title: string,
@@ -102,8 +102,7 @@ interface arrayOfObj {
 //         src: string
 //     };
 // }
-
-var ad : arrayOfObj[] = [ // hard coded array for ad listings
+var ad : any[] = [ // hard coded array for ad listings
     {x : new Books("HTML & CSS", "Jon Duckett", "HTML & CSS", 200, "Images/htmlcss.png")},
     {x : new Books("Git Essentials", "Ferdinando Santacroce", "Git", 700, "Images/git.png")},
     {x : new Mobiles("J1-Ace", "Samsung", "white", 4.3, 19000, "Images/j1.jpg")},
@@ -228,8 +227,8 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let price: number = document.getElementById("Bprice").value;
                 let image: string = document.getElementById("Bimage").value;
 
-                //creating new Book instance and pushing dynamically in the ad array
-                ad.push(x: new Books(title, author, subject, price, image));
+                //creating new Books instance and pushing dynamically in the ad array
+                ad.push(new Books(title, author, subject, price, image));                
                 break;
             }
             case 'car': {
@@ -241,8 +240,8 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let color: string = document.getElementById("Ccolor").value;
                 let price: number = document.getElementById("Cprice").value;
                 let image: string = document.getElementById("Cimage").value;
-//*****************************
-                //creating new Book instance and pushing dynamically in the ad array
+
+                //creating new Cars instance and pushing dynamically in the ad array
                 ad.push(new Cars(name, company, model, engine, color, price, image));
                 break;
             }
@@ -255,7 +254,7 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let price: number = document.getElementById("Mprice").value;
                 let image: string = document.getElementById("Mimage").value;
 
-                //creating new Book instance and pushing dynamically in the ad array
+                //creating new Mobiles instance and pushing dynamically in the ad array
                 ad.push(new Mobiles(model, company, color, screenSize, price, image));
                 break;
             }
@@ -484,6 +483,7 @@ function activatePage(id: string, tag: HTMLElement): void { // pagination activa
         }
     }
 }
-
+alert(ad);  //push hua bi hai k ni
+alert(ad.length); //9 means push ni hora y??
 
     
