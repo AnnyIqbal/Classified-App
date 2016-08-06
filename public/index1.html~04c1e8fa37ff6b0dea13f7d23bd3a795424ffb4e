@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Classified App </title>
+        <meta charset="UTF-08" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"> <!--To ensure proper rendering and touch zooming, using meta tag-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        
+<!--firebase cdn for deployment-->
+        <script src='https://cdn.firebase.com/js/client/2.4.2/firebase.js'>
+            var Firebase = require("firebase");
+        </script>
+
+<!-- bootstrap cdn links -->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- bootstrap cdn links ended -->
+
+        <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+ 
+        <link href="design.css" type="text/css" rel="stylesheet" /><!-- css file linked -->
+    </head>
+
+    <body class="scaffolding.less" data-spy="scroll" data-target=".navbar" data-offset="50">
+        <div class="container-fluid">
+<!--Jumbotron from bootstrap-->
+        <div class="jumbotron"> 
+            <br /><br /><br /><br /><br />
+            <h1>Classified App</h1>
+        </div> 
+<!-- /.Jumbotron -->
+
+<!-- Navigation Tabs-->     
+        <div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#all" aria-controls="all" role="tab" data-toggle="tab">
+                        <img src="Images/all.png" alt="all" class="img-responsive center-block" />
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#books" aria-controls="books" role="tab" data-toggle="tab">
+                        <img src="Images/b1.png" alt="books" class="img-responsive center-block" />
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#cars" aria-controls="cars" role="tab" data-toggle="tab">
+                        <img src="Images/c6.png" alt="cars" class="img-responsive center-block" />
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#mobiles" aria-controls="mobiles" role="tab" data-toggle="tab">
+                       <img src="Images/m1.png" alt="mobiles" class="img-responsive center-block" />
+                    </a>
+                </li>
+                <li id="button">
+                    <a href="postAd.html" type="button" class="btn btn-primary"> Post an Ad </a>
+                </li>
+            </ul>
+
+            <!--Tab Panes-->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="all">
+                    <div id="p1">
+                        <h1> All Ads </h1>
+                    </div> 
+                    <div id="p2" class="hidden">
+                        <h1> All Ads </h1>
+                    </div> 
+                    <div id="p3" class="hidden">
+                        <h1> All Ads </h1>
+                    </div>                 
+                    <nav aria-label="Page navigation"> <!-- pagination list -->
+                        <ul class="pagination">
+                            <!--<li><span><span aria-hidden="true">&laquo;</span></span></li>-->
+                            <li class="active"><a href="#p1" onclick="activatePage('p1', this);">1</a></li>
+                            <li><a href="#p2" onclick="activatePage('p2', this);">2</a></li>
+                            <li><a href="#p3" onclick="activatePage('p3', this);">3</a></li>
+                            <!--<li><span><span aria-hidden="true">&raquo;</span></span></li>-->
+                        </ul>
+                    </nav> <!-- /pagination list -->
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="books">
+                    <h1> Books </h1>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="cars">
+                    <h1> Cars </h1>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="mobiles">
+                    <h1> Mobiles </h1>
+                </div>
+            </div>
+        </div>
+<!--/Navigation Tabs-->
+        </div> <!-- /.container-fluid -->
+
+        <!--Javascript generated by typescript transpiler is linked-->
+        <script src="app1.js"> </script> 
+    </body>
+</html>
