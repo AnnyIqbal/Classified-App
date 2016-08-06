@@ -3,9 +3,6 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-/**
- * Ads
- */
 var Ads = (function () {
     function Ads(priceOfObject, imageOfObject) {
         this.price = priceOfObject;
@@ -72,13 +69,143 @@ var ad = [
     { x: new Cars("CheryQQ", "Santro", 2016, 1000, "red", 205000, "Images/cheryqq.jpg") },
     { x: new Mobiles("Noir S1", "Q-Mobile", "black", 5, 11000, "Images/S1.png") },
     { x: new Mobiles("E8-2", "htc", "black", 5, 27000, "Images/htc.jpg") }
-];
+]; // objects are pushed dynamically whenever a user posts ad
 //console.log(ad[0]); // complete object {} jb k alert krane se it says object
 //console.log(ad[0].x);
 //alert(ad[0].x.display()); // the value returned by display
 // alert(ad[0] instanceof Books); //false
 //alert(ad[4].x instanceof Books); //true 
 //alert(ad[0].x.cName); // yupieeeeee i got it !! :D className mil gya i.e. Books
+function checkCategory() {
+    var cat = document.getElementById("category").value;
+    switch (cat) {
+        case 'book': {
+            document.getElementById("book").className = "show";
+            document.getElementById("car").className = "hidden";
+            document.getElementById("mobile").className = "hidden";
+            // setting required attribute to all input fields of book
+            var bInputs = document.getElementById("book").getElementsByTagName("input");
+            for (var i_1 = 0; i_1 < bInputs.length; i_1++) {
+                bInputs[i_1].setAttribute("required", "required");
+            }
+            // removing required attribute from all input fields of car
+            var cInputs = document.getElementById("car").getElementsByTagName("input");
+            for (var i_2 = 0; i_2 < cInputs.length; i_2++) {
+                cInputs[i_2].removeAttribute("required");
+            }
+            // removing required attribute from all input fields of mobile              
+            var mInputs = document.getElementById("mobile").getElementsByTagName("input");
+            for (var i_3 = 0; i_3 < mInputs.length; i_3++) {
+                mInputs[i_3].removeAttribute("required");
+            }
+            break;
+        }
+        case 'car': {
+            document.getElementById("car").className = "show";
+            document.getElementById("book").className = "hidden";
+            document.getElementById("mobile").className = "hidden";
+            // setting required attribute to all input fields of car
+            var cInputs = document.getElementById("car").getElementsByTagName("input");
+            for (var i_4 = 0; i_4 < cInputs.length; i_4++) {
+                cInputs[i_4].setAttribute("required", "required");
+            }
+            // removing required attribute from all input fields of book
+            var bInputs = document.getElementById("book").getElementsByTagName("input");
+            for (var i_5 = 0; i_5 < bInputs.length; i_5++) {
+                bInputs[i_5].removeAttribute("required");
+            }
+            // removing required attribute from all input fields of mobile              
+            var mInputs = document.getElementById("mobile").getElementsByTagName("input");
+            for (var i_6 = 0; i_6 < mInputs.length; i_6++) {
+                mInputs[i_6].removeAttribute("required");
+            }
+            break;
+        }
+        case 'mobile': {
+            document.getElementById("mobile").className = "show";
+            document.getElementById("book").className = "hidden";
+            document.getElementById("car").className = "hidden";
+            // setting required attribute to all input fields of mobile
+            var mInputs = document.getElementById("mobile").getElementsByTagName("input");
+            for (var i_7 = 0; i_7 < mInputs.length; i_7++) {
+                mInputs[i_7].setAttribute("required", "required");
+            }
+            // removing required attribute from all input fields of book
+            var bInputs = document.getElementById("book").getElementsByTagName("input");
+            for (var i_8 = 0; i_8 < bInputs.length; i_8++) {
+                bInputs[i_8].removeAttribute("required");
+            }
+            // removing required attribute from all input fields of car
+            var cInputs = document.getElementById("car").getElementsByTagName("input");
+            for (var i_9 = 0; i_9 < cInputs.length; i_9++) {
+                cInputs[i_9].removeAttribute("required");
+            }
+            break;
+        }
+        default: {
+            alert("Error! Kindly select a category"); // agr select category ko select kre koi tb ye execute hoga
+        }
+    }
+}
+function pushAd() {
+    //thanks the user for posting ad if all the required fields are filled
+    var ifNotEmpty = document.getElementsByTagName("input");
+    for (var i_10 = 0; i_10 < ifNotEmpty.length; i_10++) {
+        if (!ifNotEmpty) {
+            var user = document.getElementById("username").value;
+            alert("Thank you " + user + "! Your ad has been posted.");
+        }
+    }
+    //**********************
+    // var src = document.getElementById("Bimage").value; // trying to catch src of img input
+    // alert(src);
+    //************************
+    // selected ad category
+    var cat = document.getElementById("category").value;
+    //push the ad as an object in the ads array
+    switch (cat) {
+        case 'book': {
+            // getting all input values
+            var title = document.getElementById("title").value;
+            var author = document.getElementById("author").value;
+            var subject = document.getElementById("subject").value;
+            var price = document.getElementById("Bprice").value;
+            var image = document.getElementById("Bimage").value;
+            //creating new Book instance and pushing dynamically in the ad array
+            ad.push(new Books(title, author, subject, price, image));
+            break;
+        }
+        case 'car': {
+            // getting all input values
+            var name_1 = document.getElementById("name").value;
+            var company = document.getElementById("Ccompany").value;
+            var model = document.getElementById("Cmodel").value;
+            var engine = document.getElementById("engine").value;
+            var color = document.getElementById("Ccolor").value;
+            var price = document.getElementById("Cprice").value;
+            var image = document.getElementById("Cimage").value;
+            //creating new Book instance and pushing dynamically in the ad array
+            ad.push(new Cars(name_1, company, model, engine, color, price, image));
+            break;
+        }
+        case 'mobile': {
+            // getting all input values
+            var model = document.getElementById("Mmodel").value;
+            var company = document.getElementById("Mcompany").value;
+            var color = document.getElementById("Mcolor").value;
+            var screenSize = document.getElementById("screensize").value;
+            var price = document.getElementById("Mprice").value;
+            var image = document.getElementById("Mimage").value;
+            //creating new Book instance and pushing dynamically in the ad array
+            ad.push(new Mobiles(model, company, color, screenSize, price, image));
+            break;
+        }
+        default: {
+            alert("Error!");
+        }
+    }
+}
+console.log(ad);
 // display the All tab
 var a;
 for (var i = 0; i < ad.length; i++) {
@@ -101,6 +228,7 @@ for (var i = 0; i < ad.length; i++) {
                 '</div>' +
                 '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
                 '</div>'; // creates new panel for book
+            // setting 3 ads per page
             if (i < 3) {
                 document.getElementById("p1").innerHTML += a;
             }
@@ -129,6 +257,7 @@ for (var i = 0; i < ad.length; i++) {
                 '</div>' +
                 '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
                 '</div>'; // creates new panel for car
+            // setting 3 ads per page
             if (i < 3) {
                 document.getElementById("p1").innerHTML += a;
             }
@@ -157,6 +286,7 @@ for (var i = 0; i < ad.length; i++) {
                 '</div>' +
                 '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
                 '</div>'; // creates new panel for mobile
+            // setting 3 ads per page
             if (i < 3) {
                 document.getElementById("p1").innerHTML += a;
             }

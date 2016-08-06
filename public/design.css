@@ -25,6 +25,22 @@ li a img {
     height: 50px;
     width: 50px;
 }
+#button {
+    margin-left: 530px;
+    margin-top: 20px;
+}
+#button a:hover {
+    border-style: inset;
+    color: rgb(51,122,183);
+    background-color: white;
+}
+form{
+    margin: 0 auto;
+
+}
+#post {
+    margin: 0 0;
+}
 @media screen and (max-width: 760px) {    /* for small screens<768px, jb screen ziada se ziada 767px ki ho tb */
     body {
         width: 100%;
