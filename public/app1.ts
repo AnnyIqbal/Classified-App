@@ -96,7 +96,7 @@ var ad : any[] = [ // hard coded array for ad listings
 //alert(ad[0].x.cName); // yupieeeeee i got it !! :D className mil gya i.e. Books
 
 function checkCategory(): void { //checking category selected in form and hiding & showing divs accordingly
-        var cat: string = document.getElementById("category").value;
+        var cat: string = (document.getElementById("category") as HTMLInputElement).value; // type casting string into HTMLInputElement
         switch(cat) {
             case 'book': { // show book and hide others
                 document.getElementById("book").className = "show";
@@ -176,23 +176,23 @@ function checkCategory(): void { //checking category selected in form and hiding
         var ifNotEmpty = document.getElementsByTagName("input");
         for (let i = 0; i < ifNotEmpty.length; i++) {
             if(!ifNotEmpty) {
-                var user: string = document.getElementById("username").value;
+                var user: string = (document.getElementById("username") as HTMLInputElement).value; // type casting string into HTMLInputElement
                 alert("Thank you " + user + "! Your ad has been posted.");
             }
         }
         
         // selected ad category
-        var cat: string = document.getElementById("category").value; 
+        var cat: string = (document.getElementById("category") as HTMLInputElement).value; // type casting string into HTMLInputElement
 
         //push the ad as an object in the ads array
         switch(cat) {
             case 'book': {
                 // getting all input values
-                let title: string = document.getElementById("title").value;
-                let author: string = document.getElementById("author").value;
-                let subject: string = document.getElementById("subject").value;
-                let price: number = document.getElementById("Bprice").value;
-                let image: string = document.getElementById("Bimage").value;
+                let title: string = (document.getElementById("title") as HTMLInputElement).value; // type casting string into HTMLInputElement
+                let author: string = (document.getElementById("author") as HTMLInputElement).value;
+                let subject: string = (document.getElementById("subject") as HTMLInputElement).value;
+                let price: number = parseFloat((document.getElementById("Bprice") as HTMLInputElement).value);
+                let image: string = (document.getElementById("Bimage") as HTMLInputElement).value;
 
                 //creating new Books instance and pushing dynamically in the ad array
                 ad.push({x: new Books(title, author, subject, price, image)});                       
@@ -200,13 +200,13 @@ function checkCategory(): void { //checking category selected in form and hiding
             }
             case 'car': {
                 // getting all input values
-                let name: string = document.getElementById("name").value;
-                let company: string = document.getElementById("Ccompany").value;
-                let model: number = document.getElementById("Cmodel").value;
-                let engine: number = document.getElementById("engine").value;
-                let color: string = document.getElementById("Ccolor").value;
-                let price: number = document.getElementById("Cprice").value;
-                let image: string = document.getElementById("Cimage").value;
+                let name: string = (document.getElementById("name") as HTMLInputElement).value; // type casting string into HTMLInputElement
+                let company: string = (<HTMLInputElement>document.getElementById("Ccompany")).value; // alternate way to type casting 
+                let model: number = parseFloat((document.getElementById("Cmodel") as HTMLInputElement).value);
+                let engine: number = parseFloat((document.getElementById("engine") as HTMLInputElement).value);
+                let color: string = (document.getElementById("Ccolor") as HTMLInputElement).value;
+                let price: number = parseFloat((document.getElementById("Cprice") as HTMLInputElement).value);
+                let image: string = (document.getElementById("Cimage") as HTMLInputElement).value;
 
                 //creating new Cars instance and pushing dynamically in the ad array
                 ad.push({x: new Cars(name, company, model, engine, color, price, image)});
@@ -214,19 +214,19 @@ function checkCategory(): void { //checking category selected in form and hiding
             }
             case 'mobile': {
                 // getting all input values
-                let model: string = document.getElementById("Mmodel").value;
-                let company: string = document.getElementById("Mcompany").value;
-                let color: string = document.getElementById("Mcolor").value;
-                let screenSize: number = document.getElementById("screensize").value;
-                let price: number = document.getElementById("Mprice").value;
-                let image: string = document.getElementById("Mimage").value;
+                let model: string = (document.getElementById("Mmodel") as HTMLInputElement).value; // type casting string into HTMLInputElement
+                let company: string = (document.getElementById("Mcompany") as HTMLInputElement).value;
+                let color: string = (document.getElementById("Mcolor") as HTMLInputElement).value;
+                let screenSize: number = parseFloat((document.getElementById("screensize") as HTMLInputElement).value);
+                let price: number = parseFloat((document.getElementById("Mprice") as HTMLInputElement).value);
+                let image: string = (document.getElementById("Mimage") as HTMLInputElement).value;
 
                 //creating new Mobiles instance and pushing dynamically in the ad array
                 ad.push({x: new Mobiles(model, company, color, screenSize, price, image)});
                 break;
             }
             default: {
-                alert("Error!, select a proper category");
+                alert("Error! select a proper category");
             }
         }
     }
@@ -253,7 +253,7 @@ for (var i = 0; i < ad.length; i++) {
                                 ad[i].x.display() +
                             '</div>' +
                         '</div>' +
-                        '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                        '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' + //price at footer
                     '</div>'; // creates new panel for book
             
             // setting 3 ads per page
@@ -283,7 +283,7 @@ for (var i = 0; i < ad.length; i++) {
                                 ad[i].x.display() +
                             '</div>' +
                         '</div>' +
-                        '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                        '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' + //price at footer
                     '</div>'; // creates new panel for car
 
             // setting 3 ads per page
@@ -313,7 +313,7 @@ for (var i = 0; i < ad.length; i++) {
                                 ad[i].x.display() +
                             '</div>' +
                         '</div>' +
-                        '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                        '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' + //price at footer
                     '</div>';  // creates new panel for mobile
             
             // setting 3 ads per page

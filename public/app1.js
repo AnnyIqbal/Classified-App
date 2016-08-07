@@ -77,7 +77,7 @@ var ad = [
 //alert(ad[4].x instanceof Books); //true 
 //alert(ad[0].x.cName); // yupieeeeee i got it !! :D className mil gya i.e. Books
 function checkCategory() {
-    var cat = document.getElementById("category").value;
+    var cat = document.getElementById("category").value; // type casting string into HTMLInputElement
     switch (cat) {
         case 'book': {
             document.getElementById("book").className = "show";
@@ -152,20 +152,20 @@ function pushAd() {
     var ifNotEmpty = document.getElementsByTagName("input");
     for (var i_10 = 0; i_10 < ifNotEmpty.length; i_10++) {
         if (!ifNotEmpty) {
-            var user = document.getElementById("username").value;
+            var user = document.getElementById("username").value; // type casting string into HTMLInputElement
             alert("Thank you " + user + "! Your ad has been posted.");
         }
     }
     // selected ad category
-    var cat = document.getElementById("category").value;
+    var cat = document.getElementById("category").value; // type casting string into HTMLInputElement
     //push the ad as an object in the ads array
     switch (cat) {
         case 'book': {
             // getting all input values
-            var title = document.getElementById("title").value;
+            var title = document.getElementById("title").value; // type casting string into HTMLInputElement
             var author = document.getElementById("author").value;
             var subject = document.getElementById("subject").value;
-            var price = document.getElementById("Bprice").value;
+            var price = parseFloat(document.getElementById("Bprice").value);
             var image = document.getElementById("Bimage").value;
             //creating new Books instance and pushing dynamically in the ad array
             ad.push({ x: new Books(title, author, subject, price, image) });
@@ -173,12 +173,12 @@ function pushAd() {
         }
         case 'car': {
             // getting all input values
-            var name_1 = document.getElementById("name").value;
-            var company = document.getElementById("Ccompany").value;
-            var model = document.getElementById("Cmodel").value;
-            var engine = document.getElementById("engine").value;
+            var name_1 = document.getElementById("name").value; // type casting string into HTMLInputElement
+            var company = document.getElementById("Ccompany").value; // alternate way to type casting 
+            var model = parseFloat(document.getElementById("Cmodel").value);
+            var engine = parseFloat(document.getElementById("engine").value);
             var color = document.getElementById("Ccolor").value;
-            var price = document.getElementById("Cprice").value;
+            var price = parseFloat(document.getElementById("Cprice").value);
             var image = document.getElementById("Cimage").value;
             //creating new Cars instance and pushing dynamically in the ad array
             ad.push({ x: new Cars(name_1, company, model, engine, color, price, image) });
@@ -186,18 +186,18 @@ function pushAd() {
         }
         case 'mobile': {
             // getting all input values
-            var model = document.getElementById("Mmodel").value;
+            var model = document.getElementById("Mmodel").value; // type casting string into HTMLInputElement
             var company = document.getElementById("Mcompany").value;
             var color = document.getElementById("Mcolor").value;
-            var screenSize = document.getElementById("screensize").value;
-            var price = document.getElementById("Mprice").value;
+            var screenSize = parseFloat(document.getElementById("screensize").value);
+            var price = parseFloat(document.getElementById("Mprice").value);
             var image = document.getElementById("Mimage").value;
             //creating new Mobiles instance and pushing dynamically in the ad array
             ad.push({ x: new Mobiles(model, company, color, screenSize, price, image) });
             break;
         }
         default: {
-            alert("Error!, select a proper category");
+            alert("Error! select a proper category");
         }
     }
 }
@@ -404,3 +404,4 @@ function activatePage(id, tag) {
         }
     }
 }
+//# sourceMappingURL=app1.js.map
