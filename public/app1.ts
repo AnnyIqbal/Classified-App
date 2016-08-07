@@ -195,7 +195,8 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let image: string = (document.getElementById("Bimage") as HTMLInputElement).value;
 
                 //creating new Books instance and pushing dynamically in the ad array
-                ad.push({x: new Books(title, author, subject, price, image)});                       
+                ad.push({x: new Books(title, author, subject, price, image)});     
+                alert(ad[9]);                  
                 break;
             }
             case 'car': {
@@ -255,15 +256,15 @@ for (var i = 0; i < ad.length; i++) {
                         '</div>' +
                         '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' + //price at footer
                     '</div>'; // creates new panel for book
-            
+      
             // setting 3 ads per page
-            if(i<3) {
-                document.getElementById("p1").innerHTML += a;
+            if(i<=3) {
+                document.getElementById("p1").innerHTML += a; // error araha hai cant read innerHTML of null :/
             }
-            else if(i>2 && i<6) {
+            else if(i>=4 && i<=7) {
                 document.getElementById("p2").innerHTML += a;
             }
-            else if(i>5) {
+            else if(i>=8) {
                 document.getElementById("p3").innerHTML += a;
             }
             break;
@@ -287,13 +288,13 @@ for (var i = 0; i < ad.length; i++) {
                     '</div>'; // creates new panel for car
 
             // setting 3 ads per page
-            if(i<3) {
-                document.getElementById("p1").innerHTML += a;
+            if(i<=3) {
+                document.getElementById("p1").innerHTML += a; // error araha hai cant read innerHTML of null :/
             }
-            else if(i>2 && i<6) {
+            else if(i>=4 && i<=7) {
                 document.getElementById("p2").innerHTML += a;
             }
-            else if(i>5) {
+            else if(i>=8) {
                 document.getElementById("p3").innerHTML += a;
             }
             break;
@@ -317,13 +318,13 @@ for (var i = 0; i < ad.length; i++) {
                     '</div>';  // creates new panel for mobile
             
             // setting 3 ads per page
-            if(i<3) { 
-                document.getElementById("p1").innerHTML += a;
+            if(i<=3) {
+                document.getElementById("p1").innerHTML += a; // error araha hai cant read innerHTML of null :/
             }
-            else if(i>2 && i<6) {
+            else if(i>=4 && i<=7) {
                 document.getElementById("p2").innerHTML += a;
             }
-            else if(i>5) {
+            else if(i>=8) {
                 document.getElementById("p3").innerHTML += a;
             }
             break;
