@@ -74,34 +74,6 @@ class Mobiles extends Ads {
 
 // var book1 = new Books("HTML", "Ducket", "HTML", 1200); // creating new instance (i.e.object) of a class
 
-interface arrayOfObj {
-    [x: string]: Books | Cars | Mobiles; 
-};
-//     book: {
-//         title: string,
-//         author: string,
-//         subject: string,
-//         price: number,
-//         src: string
-//     },
-//     car: {
-//         name: string,
-//         company: string,
-//         model: number,
-//         engine: number,
-//         color: string,
-//         price: number,
-//         src: string
-//     },
-//     mobile: {
-//         model: string,
-//         company: string,
-//         color: string,
-//         screenSize: number,
-//         price: number,
-//         src: string
-//     };
-// }
 var ad : any[] = [ // hard coded array for ad listings
     {x : new Books("HTML & CSS", "Jon Duckett", "HTML & CSS", 200, "Images/htmlcss.png")},
     {x : new Books("Git Essentials", "Ferdinando Santacroce", "Git", 700, "Images/git.png")},
@@ -209,11 +181,6 @@ function checkCategory(): void { //checking category selected in form and hiding
             }
         }
         
-        //**********************
-        // var src = document.getElementById("Bimage").value; // trying to catch src of img input
-        // alert(src);
-        //************************
-
         // selected ad category
         var cat: string = document.getElementById("category").value; 
 
@@ -228,7 +195,7 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let image: string = document.getElementById("Bimage").value;
 
                 //creating new Books instance and pushing dynamically in the ad array
-                ad.push(new Books(title, author, subject, price, image));                
+                ad.push({x: new Books(title, author, subject, price, image)});                       
                 break;
             }
             case 'car': {
@@ -242,7 +209,7 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let image: string = document.getElementById("Cimage").value;
 
                 //creating new Cars instance and pushing dynamically in the ad array
-                ad.push(new Cars(name, company, model, engine, color, price, image));
+                ad.push({x: new Cars(name, company, model, engine, color, price, image)});
                 break;
             }
             case 'mobile': {
@@ -255,11 +222,11 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let image: string = document.getElementById("Mimage").value;
 
                 //creating new Mobiles instance and pushing dynamically in the ad array
-                ad.push(new Mobiles(model, company, color, screenSize, price, image));
+                ad.push({x: new Mobiles(model, company, color, screenSize, price, image)});
                 break;
             }
             default: {
-                alert("Error!");
+                alert("Error!, select a proper category");
             }
         }
     }
@@ -482,8 +449,4 @@ function activatePage(id: string, tag: HTMLElement): void { // pagination activa
             alert("Error!");
         }
     }
-}
-alert(ad);  //push hua bi hai k ni
-alert(ad.length); //9 means push ni hora y??
-
-    
+}    

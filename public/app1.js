@@ -58,32 +58,7 @@ var Mobiles = (function (_super) {
     };
     return Mobiles;
 }(Ads));
-;
-//     book: {
-//         title: string,
-//         author: string,
-//         subject: string,
-//         price: number,
-//         src: string
-//     },
-//     car: {
-//         name: string,
-//         company: string,
-//         model: number,
-//         engine: number,
-//         color: string,
-//         price: number,
-//         src: string
-//     },
-//     mobile: {
-//         model: string,
-//         company: string,
-//         color: string,
-//         screenSize: number,
-//         price: number,
-//         src: string
-//     };
-// }
+// var book1 = new Books("HTML", "Ducket", "HTML", 1200); // creating new instance (i.e.object) of a class
 var ad = [
     { x: new Books("HTML & CSS", "Jon Duckett", "HTML & CSS", 200, "Images/htmlcss.png") },
     { x: new Books("Git Essentials", "Ferdinando Santacroce", "Git", 700, "Images/git.png") },
@@ -181,10 +156,6 @@ function pushAd() {
             alert("Thank you " + user + "! Your ad has been posted.");
         }
     }
-    //**********************
-    // var src = document.getElementById("Bimage").value; // trying to catch src of img input
-    // alert(src);
-    //************************
     // selected ad category
     var cat = document.getElementById("category").value;
     //push the ad as an object in the ads array
@@ -197,7 +168,7 @@ function pushAd() {
             var price = document.getElementById("Bprice").value;
             var image = document.getElementById("Bimage").value;
             //creating new Books instance and pushing dynamically in the ad array
-            ad.push(new Books(title, author, subject, price, image));
+            ad.push({ x: new Books(title, author, subject, price, image) });
             break;
         }
         case 'car': {
@@ -210,7 +181,7 @@ function pushAd() {
             var price = document.getElementById("Cprice").value;
             var image = document.getElementById("Cimage").value;
             //creating new Cars instance and pushing dynamically in the ad array
-            ad.push(new Cars(name_1, company, model, engine, color, price, image));
+            ad.push({ x: new Cars(name_1, company, model, engine, color, price, image) });
             break;
         }
         case 'mobile': {
@@ -222,11 +193,11 @@ function pushAd() {
             var price = document.getElementById("Mprice").value;
             var image = document.getElementById("Mimage").value;
             //creating new Mobiles instance and pushing dynamically in the ad array
-            ad.push(new Mobiles(model, company, color, screenSize, price, image));
+            ad.push({ x: new Mobiles(model, company, color, screenSize, price, image) });
             break;
         }
         default: {
-            alert("Error!");
+            alert("Error!, select a proper category");
         }
     }
 }
@@ -433,5 +404,3 @@ function activatePage(id, tag) {
         }
     }
 }
-alert(ad); //push hua bi hai k ni
-alert(ad.length); //9 means push ni hora y??

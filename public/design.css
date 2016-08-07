@@ -35,8 +35,8 @@ li a img {
     background-color: white;
 }
 form{
-    margin: 0 auto;
-
+    margin-left: auto;
+    margin-right: auto;
 }
 #post {
     margin: 0 0;
