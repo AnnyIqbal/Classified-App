@@ -170,7 +170,7 @@ function checkCategory(): void { //checking category selected in form and hiding
         }
     }
 
-    function pushAd(): void { // pushing the posted ads in array to be displayed
+    function pushAd(): void { // pushing the posted ads in array and displaying in appropriate tab
         
         //thanks the user for posting ad if all the required fields are filled
         var formInput = document.getElementsByTagName("input");
@@ -198,12 +198,35 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let subject: string = (document.getElementById("subject") as HTMLInputElement).value;
                 let price: number = parseFloat((document.getElementById("Bprice") as HTMLInputElement).value);
                 let image: string = (document.getElementById("Bimage") as HTMLInputElement).value;
-
+alert(image); // C:\fakepath\src.ext
                 //creating new Books instance and pushing dynamically in the ad array
                 ad.push({x: new Books(title, author, subject, price, image)});   
                 
                 document.getElementById("books").className = "tab-pane fade in active"; // activate books tab
                 document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
+                
+                // display it in the All & Books tab
+                let showBook : string;
+                showBook = '<div class="panel panel-primary">' +
+                                    '<div class="panel-heading">' +
+                                        '<h3 class="panel-title" id="title">' + //title
+                                            ad[i].x.subject +
+                                        '</h3>' +
+                                    '</div>' +
+                                    '<div class="panel-body row">'+
+                                        '<div class= "col-sm-4">' + // image
+                                            '<img src=' + ad[i].x.image + ' alt="book" height="100" width="100" />' +
+                                        '</div>' +
+                                        '<div class="col-sm-8">' + // details
+                                            ad[i].x.display() +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                                '</div>'; // creating new panel with title and content for book 
+                
+                document.getElementById("p3").innerHTML += showBook; // "all" tab page 3, id="p3"
+                document.getElementById("books").innerHTML += showBook;
+
                 break;
             }
             case 'car': {
@@ -221,6 +244,29 @@ function checkCategory(): void { //checking category selected in form and hiding
 
                 document.getElementById("cars").className = "tab-pane fade in active"; // activate cars tab
                 document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
+                
+                // display it in the All & Cars tab
+
+                showCar = '<div class="panel panel-primary">' +
+                                    '<div class="panel-heading">' +
+                                        '<h3 class="panel-title" id="title">' + //title
+                                            ad[i].x.name +
+                                        '</h3>' +
+                                    '</div>' +
+                                    '<div class="panel-body row">'+
+                                        '<div class= "col-sm-4">' + //image
+                                            '<img src=' + ad[i].x.image + ' alt="car" height="100" width="100" />' +
+                                        '</div>' +
+                                        '<div class="col-sm-8">' + // details
+                                            ad[i].x.display() +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                                '</div>'; // creating new panel with title and content for car
+                
+                document.getElementById("p3").innerHTML += showCar; // "all" tab page 3, id="p3"
+                document.getElementById("cars").innerHTML += showCar;
+
                 break;
             }
             case 'mobile': {
@@ -237,6 +283,29 @@ function checkCategory(): void { //checking category selected in form and hiding
 
                 document.getElementById("mobiles").className = "tab-pane fade in active"; // activate mobiles tab
                 document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
+
+                // display it in the All & Mobiles tab
+
+                showMobile ='<div class="panel panel-primary">' +
+                                    '<div class="panel-heading">' +
+                                        '<h3 class="panel-title" id="title">' + //title
+                                            ad[i].x.company + ' ' + ad[i].x.model +
+                                        '</h3>' +
+                                    '</div>' +
+                                    '<div class="panel-body row">'+
+                                        '<div class= "col-sm-4">' + //image
+                                            '<img src=' + ad[i].x.image + ' alt="mobile" height="100" width="100" />' +
+                                        '</div>' +
+                                        '<div class="col-sm-8">' + // details
+                                            ad[i].x.display() +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                                '</div>'; // creating new panel with title and content for mobile
+
+                document.getElementById("p3").innerHTML += showMobile; // "all" tab page 3, id="p3"
+                document.getElementById("mobiles").innerHTML += showMobile;
+
                 break;
             }
             default: {
@@ -270,7 +339,7 @@ for (var i = 0; i < ad.length; i++) {
                         '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' + //price at footer
                     '</div>'; // creates new panel for book
       
-            // setting 3 ads per page
+            // setting 4 ads per page
             if(i<=3) {
                 document.getElementById("p1").innerHTML += a; // error araha hai cant read innerHTML of null :/
             }
@@ -300,7 +369,7 @@ for (var i = 0; i < ad.length; i++) {
                         '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' + //price at footer
                     '</div>'; // creates new panel for car
 
-            // setting 3 ads per page
+            // setting 4 ads per page
             if(i<=3) {
                 document.getElementById("p1").innerHTML += a; // error araha hai cant read innerHTML of null :/
             }
@@ -330,7 +399,7 @@ for (var i = 0; i < ad.length; i++) {
                         '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' + //price at footer
                     '</div>';  // creates new panel for mobile
             
-            // setting 3 ads per page
+            // setting 4 ads per page
             if(i<=3) {
                 document.getElementById("p1").innerHTML += a; // error araha hai cant read innerHTML of null :/
             }
