@@ -26,23 +26,43 @@ li a img {
     width: 50px;
 }
 #button {
-    margin-left: 530px;
-    margin-top: 20px;
+    margin-left: 46%;
+    /*this setting was for #button a element
+    margin-left: 52%; 
+    margin-top: 20px;*/
 }
+#button a img {
+    width: 150px;
+    height: 50px;
+}
+/*this setting was for #button a element
 #button a:hover {
     border-style: inset;
     color: rgb(51,122,183);
     background-color: white;
-    border-color: rgb(51,122,183);
-}
-form{
+    border: 2px solid rgb(51,122,183);
+}*/
+form {
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
 }
-#post {
-    margin: 0 0;
-    color: white;
+input, select {
+    width: 100%;
+    padding: 5px;
 }
+#post {
+    width: 100%;
+    padding: 10px;
+}
+#post:hover {
+    text-transform: uppercase;
+    font-weight: bolder;
+    border: 2px solid rgb(51,122,183);
+    color: rgb(51,122,183);
+    background-color: white;
+}
+
 @media screen and (max-width: 760px) {    /* for small screens<768px, jb screen ziada se ziada 767px ki ho tb */
     body {
         width: 100%;
@@ -51,6 +71,9 @@ form{
     li a img {
         width: 25px;
         height: 25px;
+    }
+    form {
+        width: 100%;
     }
 }
 @media screen and (min-width: 1000px) { /* for large screens, >1000px */

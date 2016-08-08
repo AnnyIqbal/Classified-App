@@ -70,9 +70,6 @@ var ad = [
     { x: new Mobiles("Noir S1", "Q-Mobile", "black", 5, 11000, "Images/S1.png") },
     { x: new Mobiles("E8-2", "htc", "black", 5, 27000, "Images/htc.jpg") }
 ]; // objects are pushed dynamically whenever a user posts ad
-//console.log(ad[0]); // complete object {} jb k alert krane se it says object
-//console.log(ad[0].x);
-//alert(ad[0].x.display()); // the value returned by display
 // alert(ad[0] instanceof Books); //false
 //alert(ad[4].x instanceof Books); //true 
 //alert(ad[0].x.cName); // yupieeeeee i got it !! :D className mil gya i.e. Books
@@ -82,7 +79,7 @@ function fieldsEmptied() {
         inputs[i_1].value = '';
     }
     // de-selecting the select category option in form
-    var select = document.getElementById("category").value = 'null'; //.setAttribute("selected", "selected");
+    var select = document.getElementById("category").value = 'null';
 }
 function checkCategory() {
     var cat = document.getElementById("category").value; // type casting string into HTMLInputElement
@@ -151,28 +148,14 @@ function checkCategory() {
             break;
         }
         default: {
-            alert("Error! Kindly select a category"); // agr select category ko select kre koi tb ye execute hoga
+            document.getElementById("category").focus();
         }
     }
 }
 function pushAd() {
-    //thanks the user for posting ad if all the required fields are filled
-    var flag;
-    var formInput = document.getElementsByTagName("input");
-    for (var i_11 = 0; i_11 < formInput.length; i_11++) {
-        if (formInput[i_11].hasAttribute("required")) {
-            flag = (formInput[i_11].value != '') ? true : false; // set flag = true else false
-        }
-    }
-    if (flag) {
-        var user = document.getElementById("username").value; // type casting string into HTMLInputElement
-        alert("Thank you " + user + "! Your ad has been posted."); // alert thanks
-    }
-    // deactivating the tab "forms"
-    document.getElementById("form").removeAttribute("active");
-    checkCategory(); // setting and removing the required attribute and form divs according to category selection
     // selected ad category
     var cat = document.getElementById("category").value; // type casting string into HTMLInputElement
+    checkCategory(); // setting and removing the required attribute and form divs according to category selection
     //push the ad as an object in the ads array
     switch (cat) {
         case 'book': {
@@ -185,6 +168,7 @@ function pushAd() {
             var filename = image.slice(12, image.length); //filename.extension
             var src = "C:/Users/Public/Pictures/" + filename; // the img u hv 2 upload should be placed at the specific url
             //creating new Books instance and pushing dynamically in the ad array
+            // if(title != '' && author != '' && subject != '' && isNaN(price) && image != '')
             ad.push({ x: new Books(title, author, subject, price, src) }); // passing specific url for image upload, img must be at that location
             document.getElementById("books").className = "tab-pane fade in active"; // activate books tab
             document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
@@ -284,9 +268,8 @@ function pushAd() {
             break;
         }
         default: {
-            alert("Error! select a proper category");
         }
-    }
+    } // </switch>
 }
 // display the All tab
 var a;

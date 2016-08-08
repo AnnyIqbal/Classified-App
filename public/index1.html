@@ -58,7 +58,10 @@
                     </a>
                 </li>
                 <li id="button" role="presentation">
-                    <a href="#form" type="button" class="btn btn-primary" aria-controls="form" role="tab" data-toggle="tab" onclick="fieldsEmptied();"> Post an Ad </a>
+                    <a href="#form" type="button" aria-controls="form" role="tab" data-toggle="tab" onclick="fieldsEmptied();">
+                        <!--class="btn btn-primary"-->
+                        <img src="Images/posturad.png" alt="Post Ad" /> 
+                    </a>
                 </li>
             </ul>
 
@@ -96,25 +99,26 @@
                 <div role="tabpanel" class="tab-pane fade" id="form">
                     <h1> POST AN AD </h1>
                      <!--form for taking ad details -->
-                    <form action="Javascript:void(0)" method="post">
-                        <label for="username" class="sr-only"> Name </label>
-                        <input type="text" name="username" id="username" placeholder="Name" required autofocus />
+                    <form action="Javascript:void(0)" method="post">  
+                                            
+                            <label for="username" class="sr-only"> Name </label>
+                            <input type="text" name="username" id="username" placeholder="Name" required autofocus />
             <br /><br />
-                        <label for="email" class="sr-only"> Email </label>
-                        <input type="email" name="email" id="email" placeholder="Email" required />
+                            <label for="email" class="sr-only"> Email </label>
+                            <input type="email" name="email" id="email" placeholder="Email" required />
             <br /><br />
-                        <label for="contact number" class="sr-only"> Contact Number </label>
-                        <input type="number" name="contactNum" id="contact number" placeholder="Contact Number" />
+                            <label for="contact number" class="sr-only"> Contact Number </label>
+                            <input type="number" name="contactNum" id="contact number" placeholder="Contact Number" />
             <br /><br />
-                        <label for="category" class="sr-only"> Select Category </label>
-                        <select id="category" required oninput="checkCategory();">
-                            <option value="null" selected> Select Category </option>
-                            <option value="book"> Book </option>
-                            <option value="car"> Car </option>
-                            <option value="mobile"> Mobile </option>
-                        </select>
+                            <label for="category" class="sr-only"> Select Category </label>
+                            <select id="category" required oninput="checkCategory();">
+                                <option value="null" selected> Select Category </option>
+                                <option value="book"> Book </option>
+                                <option value="car"> Car </option>
+                                <option value="mobile"> Mobile </option>
+                            </select>
             <br /><br />
-                                    
+                        
                         <div id="book" class="hidden"> 
                             <label for="Btitle" class="sr-only"> Title </label>
                             <input type="text" name="title" id="Btitle" placeholder="Title" />
@@ -129,7 +133,8 @@
                             <input type="number" name="price" id="Bprice" placeholder="Price in PKR" />
             <br /><br />
                             <label for="Bimage" class="sr-only"> Upload Image </label>
-                            <input type="file" name="pic" id="Bimage" />
+                            <input type="file" name="pic" id="Bimage" data-toggle="tooltip" title="Upload image from 'C:/Users/Public/Pictures/' directory" />
+            <br /><br />
                         </div>
 
                         <div id="car" class="hidden"> 
@@ -152,7 +157,8 @@
                             <input type="number" name="price" id="Cprice" placeholder="Price in PKR" />
             <br /><br />
                             <label for="Cimage" class="sr-only"> Upload Image </label>
-                            <input type="file" name="pic" id="Cimage" placeholder="Upload Image" />
+                            <input type="file" name="pic" id="Cimage" data-toggle="tooltip" title="Upload image from 'C:/Users/Public/Pictures/' directory" />
+            <br /><br />
                         </div>
 
                         <div id="mobile" class="hidden"> 
@@ -172,11 +178,11 @@
                             <input type="number" name="price" id="Mprice" placeholder="Price in PKR" />
             <br /><br />
                             <label for="Mimage" class="sr-only"> Upload Image </label>
-                            <input type="file" name="pic" id="Mimage" placeholder="Upload Image" />
-                        </div>
+                            <input type="file" name="pic" id="Mimage" data-toggle="tooltip" title="Upload image from 'C:/Users/Public/Pictures/' directory" />
             <br /><br />
+                        </div>
                         <label for="post" class="sr-only"> Post </label>
-                        <input type="submit" id="post" value="POST" class="btn btn-primary btn-block" onclick="pushAd();" />
+                        <button type="submit" id="post" class="btn btn-primary btn-block" onclick="pushAd();"> Post My Ad </button>
             <br /><br />
                     </form> <!-- /form -->
                 </div> <!-- /#form tab -->
