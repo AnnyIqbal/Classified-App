@@ -149,12 +149,16 @@ function checkCategory() {
 }
 function pushAd() {
     //thanks the user for posting ad if all the required fields are filled
-    var ifNotEmpty = document.getElementsByTagName("input");
-    for (var i_10 = 0; i_10 < ifNotEmpty.length; i_10++) {
-        if (!ifNotEmpty) {
-            var user = document.getElementById("username").value; // type casting string into HTMLInputElement
-            alert("Thank you " + user + "! Your ad has been posted.");
+    var formInput = document.getElementsByTagName("input");
+    var flag;
+    for (var i_10 = 0; i_10 < formInput.length; i_10++) {
+        if (formInput[i_10].hasAttribute("required")) {
+            flag = formInput[i_10].value ? true : false; // set flag = true else false
         }
+    }
+    if (flag = true) {
+        var user = document.getElementById("username").value; // type casting string into HTMLInputElement
+        alert("Thank you " + user + "! Your ad has been posted."); // alert thanks
     }
     // selected ad category
     var cat = document.getElementById("category").value; // type casting string into HTMLInputElement
@@ -169,7 +173,8 @@ function pushAd() {
             var image = document.getElementById("Bimage").value;
             //creating new Books instance and pushing dynamically in the ad array
             ad.push({ x: new Books(title, author, subject, price, image) });
-            alert(ad[9]);
+            document.getElementById("books").className = "tab-pane fade in active"; // activate books tab
+            document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
             break;
         }
         case 'car': {
@@ -183,6 +188,8 @@ function pushAd() {
             var image = document.getElementById("Cimage").value;
             //creating new Cars instance and pushing dynamically in the ad array
             ad.push({ x: new Cars(name_1, company, model, engine, color, price, image) });
+            document.getElementById("cars").className = "tab-pane fade in active"; // activate cars tab
+            document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
             break;
         }
         case 'mobile': {
@@ -195,6 +202,8 @@ function pushAd() {
             var image = document.getElementById("Mimage").value;
             //creating new Mobiles instance and pushing dynamically in the ad array
             ad.push({ x: new Mobiles(model, company, color, screenSize, price, image) });
+            document.getElementById("mobiles").className = "tab-pane fade in active"; // activate mobiles tab
+            document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
             break;
         }
         default: {

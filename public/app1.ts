@@ -173,13 +173,18 @@ function checkCategory(): void { //checking category selected in form and hiding
     function pushAd(): void { // pushing the posted ads in array to be displayed
         
         //thanks the user for posting ad if all the required fields are filled
-        var ifNotEmpty = document.getElementsByTagName("input");
-        for (let i = 0; i < ifNotEmpty.length; i++) {
-            if(!ifNotEmpty) {
-                var user: string = (document.getElementById("username") as HTMLInputElement).value; // type casting string into HTMLInputElement
-                alert("Thank you " + user + "! Your ad has been posted.");
+        var formInput = document.getElementsByTagName("input");
+        let flag: boolean;
+
+        for (let i = 0; i < formInput.length; i++) { // loop through all input elements of form
+            if(formInput[i].hasAttribute("required")) { // if the input element contains a required attribute
+                flag = formInput[i].value? true : false; // set flag = true else false
             }
         }
+        if(flag = true) {
+        var user: string = (document.getElementById("username") as HTMLInputElement).value; // type casting string into HTMLInputElement
+                alert("Thank you " + user + "! Your ad has been posted."); // alert thanks
+            }
         
         // selected ad category
         var cat: string = (document.getElementById("category") as HTMLInputElement).value; // type casting string into HTMLInputElement
@@ -195,8 +200,10 @@ function checkCategory(): void { //checking category selected in form and hiding
                 let image: string = (document.getElementById("Bimage") as HTMLInputElement).value;
 
                 //creating new Books instance and pushing dynamically in the ad array
-                ad.push({x: new Books(title, author, subject, price, image)});     
-                alert(ad[9]);                  
+                ad.push({x: new Books(title, author, subject, price, image)});   
+                
+                document.getElementById("books").className = "tab-pane fade in active"; // activate books tab
+                document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
                 break;
             }
             case 'car': {
@@ -211,6 +218,9 @@ function checkCategory(): void { //checking category selected in form and hiding
 
                 //creating new Cars instance and pushing dynamically in the ad array
                 ad.push({x: new Cars(name, company, model, engine, color, price, image)});
+
+                document.getElementById("cars").className = "tab-pane fade in active"; // activate cars tab
+                document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
                 break;
             }
             case 'mobile': {
@@ -224,6 +234,9 @@ function checkCategory(): void { //checking category selected in form and hiding
 
                 //creating new Mobiles instance and pushing dynamically in the ad array
                 ad.push({x: new Mobiles(model, company, color, screenSize, price, image)});
+
+                document.getElementById("mobiles").className = "tab-pane fade in active"; // activate mobiles tab
+                document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
                 break;
             }
             default: {
