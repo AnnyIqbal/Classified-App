@@ -33,6 +33,7 @@ li a img {
     border-style: inset;
     color: rgb(51,122,183);
     background-color: white;
+    border-color: rgb(51,122,183);
 }
 form{
     margin-left: auto;
@@ -40,6 +41,7 @@ form{
 }
 #post {
     margin: 0 0;
+    color: white;
 }
 @media screen and (max-width: 760px) {    /* for small screens<768px, jb screen ziada se ziada 767px ki ho tb */
     body {

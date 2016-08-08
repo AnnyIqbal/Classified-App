@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li id="button" role="presentation">
-                    <a href="#form" type="button" class="btn btn-primary" aria-controls="form" role="tab" data-toggle="tab"> Post an Ad </a>
+                    <a href="#form" type="button" class="btn btn-primary" aria-controls="form" role="tab" data-toggle="tab" onclick="fieldsEmptied();"> Post an Ad </a>
                 </li>
             </ul>
 
@@ -108,7 +108,7 @@
             <br /><br />
                         <label for="category" class="sr-only"> Select Category </label>
                         <select id="category" required oninput="checkCategory();">
-                            <option value="null"> Select Category </option>
+                            <option value="null" selected> Select Category </option>
                             <option value="book"> Book </option>
                             <option value="car"> Car </option>
                             <option value="mobile"> Mobile </option>
@@ -116,8 +116,8 @@
             <br /><br />
                                     
                         <div id="book" class="hidden"> 
-                            <label for="title" class="sr-only"> Title </label>
-                            <input type="text" name="title" id="title" placeholder="Title" />
+                            <label for="Btitle" class="sr-only"> Title </label>
+                            <input type="text" name="title" id="Btitle" placeholder="Title" />
             <br /><br />
                             <label for="author" class="sr-only"> Author </label>
                             <input type="text" name="author" id="author" placeholder="Author" />
@@ -129,7 +129,7 @@
                             <input type="number" name="price" id="Bprice" placeholder="Price in PKR" />
             <br /><br />
                             <label for="Bimage" class="sr-only"> Upload Image </label>
-                            <input type="file" name="pic" id="Bimage" placeholder="Upload Image" />
+                            <input type="file" name="pic" id="Bimage" />
                         </div>
 
                         <div id="car" class="hidden"> 
@@ -176,12 +176,10 @@
                         </div>
             <br /><br />
                         <label for="post" class="sr-only"> Post </label>
-                        <input type="submit" id="post" value="Post" class="btn btn-primary btn-block" onclick="pushAd();" />
-                        <!--<input type="button" id="submit" class="btn btn-primary" onclick="thanksMsg();" value="Submit" />-->
-                        <!--<button type="button" id="submit" class="btn btn-primary" onclick="thanksMsg();">Submit </button>-->
-
+                        <input type="submit" id="post" value="POST" class="btn btn-primary btn-block" onclick="pushAd();" />
+            <br /><br />
                     </form> <!-- /form -->
-                </div>
+                </div> <!-- /#form tab -->
             </div>
         </div>
 <!--/Navigation Tabs-->

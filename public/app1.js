@@ -76,6 +76,14 @@ var ad = [
 // alert(ad[0] instanceof Books); //false
 //alert(ad[4].x instanceof Books); //true 
 //alert(ad[0].x.cName); // yupieeeeee i got it !! :D className mil gya i.e. Books
+function fieldsEmptied() {
+    var inputs = document.getElementsByTagName("input");
+    for (var i_1 = 0; i_1 < inputs.length; i_1++) {
+        inputs[i_1].value = '';
+    }
+    // de-selecting the select category option in form
+    var select = document.getElementById("category").value = 'null'; //.setAttribute("selected", "selected");
+}
 function checkCategory() {
     var cat = document.getElementById("category").value; // type casting string into HTMLInputElement
     switch (cat) {
@@ -85,18 +93,18 @@ function checkCategory() {
             document.getElementById("mobile").className = "hidden";
             // setting required attribute to all input fields of book
             var bInputs = document.getElementById("book").getElementsByTagName("input");
-            for (var i_1 = 0; i_1 < bInputs.length; i_1++) {
-                bInputs[i_1].setAttribute("required", "required");
+            for (var i_2 = 0; i_2 < bInputs.length; i_2++) {
+                bInputs[i_2].setAttribute("required", "required");
             }
             // removing required attribute from all input fields of car
             var cInputs = document.getElementById("car").getElementsByTagName("input");
-            for (var i_2 = 0; i_2 < cInputs.length; i_2++) {
-                cInputs[i_2].removeAttribute("required");
+            for (var i_3 = 0; i_3 < cInputs.length; i_3++) {
+                cInputs[i_3].removeAttribute("required");
             }
             // removing required attribute from all input fields of mobile              
             var mInputs = document.getElementById("mobile").getElementsByTagName("input");
-            for (var i_3 = 0; i_3 < mInputs.length; i_3++) {
-                mInputs[i_3].removeAttribute("required");
+            for (var i_4 = 0; i_4 < mInputs.length; i_4++) {
+                mInputs[i_4].removeAttribute("required");
             }
             break;
         }
@@ -106,18 +114,18 @@ function checkCategory() {
             document.getElementById("mobile").className = "hidden";
             // setting required attribute to all input fields of car
             var cInputs = document.getElementById("car").getElementsByTagName("input");
-            for (var i_4 = 0; i_4 < cInputs.length; i_4++) {
-                cInputs[i_4].setAttribute("required", "required");
+            for (var i_5 = 0; i_5 < cInputs.length; i_5++) {
+                cInputs[i_5].setAttribute("required", "required");
             }
             // removing required attribute from all input fields of book
             var bInputs = document.getElementById("book").getElementsByTagName("input");
-            for (var i_5 = 0; i_5 < bInputs.length; i_5++) {
-                bInputs[i_5].removeAttribute("required");
+            for (var i_6 = 0; i_6 < bInputs.length; i_6++) {
+                bInputs[i_6].removeAttribute("required");
             }
             // removing required attribute from all input fields of mobile              
             var mInputs = document.getElementById("mobile").getElementsByTagName("input");
-            for (var i_6 = 0; i_6 < mInputs.length; i_6++) {
-                mInputs[i_6].removeAttribute("required");
+            for (var i_7 = 0; i_7 < mInputs.length; i_7++) {
+                mInputs[i_7].removeAttribute("required");
             }
             break;
         }
@@ -127,18 +135,18 @@ function checkCategory() {
             document.getElementById("car").className = "hidden";
             // setting required attribute to all input fields of mobile
             var mInputs = document.getElementById("mobile").getElementsByTagName("input");
-            for (var i_7 = 0; i_7 < mInputs.length; i_7++) {
-                mInputs[i_7].setAttribute("required", "required");
+            for (var i_8 = 0; i_8 < mInputs.length; i_8++) {
+                mInputs[i_8].setAttribute("required", "required");
             }
             // removing required attribute from all input fields of book
             var bInputs = document.getElementById("book").getElementsByTagName("input");
-            for (var i_8 = 0; i_8 < bInputs.length; i_8++) {
-                bInputs[i_8].removeAttribute("required");
+            for (var i_9 = 0; i_9 < bInputs.length; i_9++) {
+                bInputs[i_9].removeAttribute("required");
             }
             // removing required attribute from all input fields of car
             var cInputs = document.getElementById("car").getElementsByTagName("input");
-            for (var i_9 = 0; i_9 < cInputs.length; i_9++) {
-                cInputs[i_9].removeAttribute("required");
+            for (var i_10 = 0; i_10 < cInputs.length; i_10++) {
+                cInputs[i_10].removeAttribute("required");
             }
             break;
         }
@@ -149,50 +157,54 @@ function checkCategory() {
 }
 function pushAd() {
     //thanks the user for posting ad if all the required fields are filled
-    var formInput = document.getElementsByTagName("input");
     var flag;
-    for (var i_10 = 0; i_10 < formInput.length; i_10++) {
-        if (formInput[i_10].hasAttribute("required")) {
-            flag = formInput[i_10].value ? true : false; // set flag = true else false
+    var formInput = document.getElementsByTagName("input");
+    for (var i_11 = 0; i_11 < formInput.length; i_11++) {
+        if (formInput[i_11].hasAttribute("required")) {
+            flag = (formInput[i_11].value != '') ? true : false; // set flag = true else false
         }
     }
-    if (flag = true) {
+    if (flag) {
         var user = document.getElementById("username").value; // type casting string into HTMLInputElement
         alert("Thank you " + user + "! Your ad has been posted."); // alert thanks
     }
+    // deactivating the tab "forms"
+    document.getElementById("form").removeAttribute("active");
+    checkCategory(); // setting and removing the required attribute and form divs according to category selection
     // selected ad category
     var cat = document.getElementById("category").value; // type casting string into HTMLInputElement
     //push the ad as an object in the ads array
     switch (cat) {
         case 'book': {
             // getting all input values
-            var title = document.getElementById("title").value; // type casting string into HTMLInputElement
+            var title = document.getElementById("Btitle").value; // type casting string into HTMLInputElement
             var author = document.getElementById("author").value;
             var subject = document.getElementById("subject").value;
             var price = parseFloat(document.getElementById("Bprice").value);
-            var image = document.getElementById("Bimage").value;
-            alert(image);
+            var image = document.getElementById("Bimage").value; // C:\fakepath\filename.extension
+            var filename = image.slice(12, image.length); //filename.extension
+            var src = "C:/Users/Public/Pictures/" + filename; // the img u hv 2 upload should be placed at the specific url
             //creating new Books instance and pushing dynamically in the ad array
-            ad.push({ x: new Books(title, author, subject, price, image) });
+            ad.push({ x: new Books(title, author, subject, price, src) }); // passing specific url for image upload, img must be at that location
             document.getElementById("books").className = "tab-pane fade in active"; // activate books tab
             document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
             // display it in the All & Books tab
-            var showBook_1;
+            var showBook_1, lastIndex = ad.length - 1;
             showBook_1 = '<div class="panel panel-primary">' +
                 '<div class="panel-heading">' +
-                '<h3 class="panel-title" id="title">' +
-                ad[i].x.subject +
+                '<h3 class="panel-title">' +
+                ad[lastIndex].x.subject +
                 '</h3>' +
                 '</div>' +
                 '<div class="panel-body row">' +
                 '<div class= "col-sm-4">' +
-                '<img src=' + ad[i].x.image + ' alt="book" height="100" width="100" />' +
+                '<img src=' + ad[lastIndex].x.image + ' alt="book" height="100" width="100" />' +
                 '</div>' +
                 '<div class="col-sm-8">' +
-                ad[i].x.display() +
+                ad[lastIndex].x.display() +
                 '</div>' +
                 '</div>' +
-                '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[lastIndex].x.price + '/-</strong> </div>' +
                 '</div>'; // creating new panel with title and content for book 
             document.getElementById("p3").innerHTML += showBook_1; // "all" tab page 3, id="p3"
             document.getElementById("books").innerHTML += showBook_1;
@@ -206,30 +218,33 @@ function pushAd() {
             var engine = parseFloat(document.getElementById("engine").value);
             var color = document.getElementById("Ccolor").value;
             var price = parseFloat(document.getElementById("Cprice").value);
-            var image = document.getElementById("Cimage").value;
+            var image = document.getElementById("Cimage").value; // C:\fakepath\filename.extension
+            var filename = image.slice(12, image.length); //filename.extension
+            var src = "C:/Users/Public/Pictures/" + filename; // the img u hv 2 upload should be placed at the specific url
             //creating new Cars instance and pushing dynamically in the ad array
-            ad.push({ x: new Cars(name_1, company, model, engine, color, price, image) });
+            ad.push({ x: new Cars(name_1, company, model, engine, color, price, src) });
             document.getElementById("cars").className = "tab-pane fade in active"; // activate cars tab
             document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
             // display it in the All & Cars tab
-            showCar = '<div class="panel panel-primary">' +
+            var showCar_1, lastIndex = ad.length - 1;
+            showCar_1 = '<div class="panel panel-primary">' +
                 '<div class="panel-heading">' +
-                '<h3 class="panel-title" id="title">' +
-                ad[i].x.name +
+                '<h3 class="panel-title">' +
+                ad[lastIndex].x.name +
                 '</h3>' +
                 '</div>' +
                 '<div class="panel-body row">' +
                 '<div class= "col-sm-4">' +
-                '<img src=' + ad[i].x.image + ' alt="car" height="100" width="100" />' +
+                '<img src=' + ad[lastIndex].x.image + ' alt="car" height="100" width="100" />' +
                 '</div>' +
                 '<div class="col-sm-8">' +
-                ad[i].x.display() +
+                ad[lastIndex].x.display() +
                 '</div>' +
                 '</div>' +
-                '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[lastIndex].x.price + '/-</strong> </div>' +
                 '</div>'; // creating new panel with title and content for car
-            document.getElementById("p3").innerHTML += showCar; // "all" tab page 3, id="p3"
-            document.getElementById("cars").innerHTML += showCar;
+            document.getElementById("p3").innerHTML += showCar_1; // "all" tab page 3, id="p3"
+            document.getElementById("cars").innerHTML += showCar_1;
             break;
         }
         case 'mobile': {
@@ -239,30 +254,33 @@ function pushAd() {
             var color = document.getElementById("Mcolor").value;
             var screenSize = parseFloat(document.getElementById("screensize").value);
             var price = parseFloat(document.getElementById("Mprice").value);
-            var image = document.getElementById("Mimage").value;
+            var image = document.getElementById("Mimage").value; // C:\fakepath\filename.extension
+            var filename = image.slice(12, image.length); //filename.extension
+            var src = "C:/Users/Public/Pictures/" + filename; // the img u hv 2 upload should be placed at the specific url
             //creating new Mobiles instance and pushing dynamically in the ad array
-            ad.push({ x: new Mobiles(model, company, color, screenSize, price, image) });
+            ad.push({ x: new Mobiles(model, company, color, screenSize, price, src) });
             document.getElementById("mobiles").className = "tab-pane fade in active"; // activate mobiles tab
             document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
             // display it in the All & Mobiles tab
-            showMobile = '<div class="panel panel-primary">' +
+            var showMobile_1, lastIndex = ad.length - 1;
+            showMobile_1 = '<div class="panel panel-primary">' +
                 '<div class="panel-heading">' +
-                '<h3 class="panel-title" id="title">' +
-                ad[i].x.company + ' ' + ad[i].x.model +
+                '<h3 class="panel-title">' +
+                ad[lastIndex].x.company + ' ' + ad[lastIndex].x.model +
                 '</h3>' +
                 '</div>' +
                 '<div class="panel-body row">' +
                 '<div class= "col-sm-4">' +
-                '<img src=' + ad[i].x.image + ' alt="mobile" height="100" width="100" />' +
+                '<img src=' + ad[lastIndex].x.image + ' alt="mobile" height="100" width="100" />' +
                 '</div>' +
                 '<div class="col-sm-8">' +
-                ad[i].x.display() +
+                ad[lastIndex].x.display() +
                 '</div>' +
                 '</div>' +
-                '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[i].x.price + '/-</strong> </div>' +
+                '<div class="panel-footer text-right"> <strong>Price: Rs. ' + ad[lastIndex].x.price + '/-</strong> </div>' +
                 '</div>'; // creating new panel with title and content for mobile
-            document.getElementById("p3").innerHTML += showMobile; // "all" tab page 3, id="p3"
-            document.getElementById("mobiles").innerHTML += showMobile;
+            document.getElementById("p3").innerHTML += showMobile_1; // "all" tab page 3, id="p3"
+            document.getElementById("mobiles").innerHTML += showMobile_1;
             break;
         }
         default: {
@@ -307,7 +325,7 @@ for (var i = 0; i < ad.length; i++) {
         case 'Cars': {
             a = '<div class="panel panel-primary">' +
                 '<div class="panel-heading">' +
-                '<h3 class="panel-title" id="title">' +
+                '<h3 class="panel-title">' +
                 ad[i].x.name +
                 '</h3>' +
                 '</div>' +
@@ -336,7 +354,7 @@ for (var i = 0; i < ad.length; i++) {
         case 'Mobiles': {
             a = '<div class="panel panel-primary">' +
                 '<div class="panel-heading">' +
-                '<h3 class="panel-title" id="title">' +
+                '<h3 class="panel-title">' +
                 ad[i].x.company + ' ' + ad[i].x.model +
                 '</h3>' +
                 '</div>' +
@@ -374,7 +392,7 @@ for (var i = 0; i < ad.length; i++) {
     if (classDeterminator === "Books") {
         showBook = '<div class="panel panel-primary">' +
             '<div class="panel-heading">' +
-            '<h3 class="panel-title" id="title">' +
+            '<h3 class="panel-title">' +
             ad[i].x.subject +
             '</h3>' +
             '</div>' +
@@ -398,7 +416,7 @@ for (var i = 0; i < ad.length; i++) {
     if (classDeterminator === "Cars") {
         showCar = '<div class="panel panel-primary">' +
             '<div class="panel-heading">' +
-            '<h3 class="panel-title" id="title">' +
+            '<h3 class="panel-title">' +
             ad[i].x.name +
             '</h3>' +
             '</div>' +
@@ -422,7 +440,7 @@ for (var i = 0; i < ad.length; i++) {
     if (classDeterminator === "Mobiles") {
         showMobile = '<div class="panel panel-primary">' +
             '<div class="panel-heading">' +
-            '<h3 class="panel-title" id="title">' +
+            '<h3 class="panel-title">' +
             ad[i].x.company + ' ' + ad[i].x.model +
             '</h3>' +
             '</div>' +
