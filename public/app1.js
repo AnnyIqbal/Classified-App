@@ -89,66 +89,18 @@ function checkCategory() {
             document.getElementById("book").className = "show";
             document.getElementById("car").className = "hidden";
             document.getElementById("mobile").className = "hidden";
-            //********************
-            // // setting required attribute to all input fields of book
-            // let bInputs: any = document.getElementById("book").getElementsByTagName("input");
-            // for(let i = 0; i < bInputs.length; i++) {
-            //     bInputs[i].setAttribute("required", "required");
-            // }
-            // // removing required attribute from all input fields of car
-            // let cInputs: any = document.getElementById("car").getElementsByTagName("input");
-            // for(let i = 0; i < cInputs.length ; i++) {
-            //     cInputs[i].removeAttribute("required");
-            // }
-            // // removing required attribute from all input fields of mobile              
-            // let mInputs: any = document.getElementById("mobile").getElementsByTagName("input");
-            // for(let i = 0; i < mInputs.length ; i++) {
-            //     mInputs[i].removeAttribute("required");
-            // }
             break;
         }
         case 'car': {
             document.getElementById("car").className = "show";
             document.getElementById("book").className = "hidden";
             document.getElementById("mobile").className = "hidden";
-            //********************
-            // // setting required attribute to all input fields of car
-            // let cInputs: any = document.getElementById("car").getElementsByTagName("input");
-            // for(let i = 0; i < cInputs.length; i++) {
-            //     cInputs[i].setAttribute("required", "required");
-            // }
-            // // removing required attribute from all input fields of book
-            // let bInputs: any = document.getElementById("book").getElementsByTagName("input");
-            // for(let i = 0; i < bInputs.length ; i++) {
-            //     bInputs[i].removeAttribute("required");
-            // }
-            // // removing required attribute from all input fields of mobile              
-            // let mInputs: any = document.getElementById("mobile").getElementsByTagName("input");
-            // for(let i = 0; i < mInputs.length ; i++) {
-            //     mInputs[i].removeAttribute("required");
-            // }
             break;
         }
         case 'mobile': {
             document.getElementById("mobile").className = "show";
             document.getElementById("book").className = "hidden";
             document.getElementById("car").className = "hidden";
-            //********************
-            // // setting required attribute to all input fields of mobile
-            // let mInputs: any = document.getElementById("mobile").getElementsByTagName("input");
-            // for(let i = 0; i < mInputs.length; i++) {
-            //     mInputs[i].setAttribute("required", "required");
-            // }
-            // // removing required attribute from all input fields of book
-            // let bInputs: any = document.getElementById("book").getElementsByTagName("input");
-            // for(let i = 0; i < bInputs.length ; i++) {
-            //     bInputs[i].removeAttribute("required");
-            // }
-            // // removing required attribute from all input fields of car
-            // let cInputs: any = document.getElementById("car").getElementsByTagName("input");
-            // for(let i = 0; i < cInputs.length ; i++) {
-            //     cInputs[i].removeAttribute("required");
-            // }
             break;
         }
         default: {
@@ -198,7 +150,7 @@ function validateForm() {
             break;
         default: {
             if (isNotEmpty("username") && isNotEmpty("email")) {
-                alert("Select a category please!");
+                alert("Select a category please!"); // throw error
             }
         }
     } // </switch>
@@ -218,7 +170,6 @@ function pushAd() {
             var filename = image.slice(12, image.length); //filename.extension
             var src = "C:/Users/Public/Pictures/" + filename; // the img u hv 2 upload should be placed at the specific url
             //creating new Books instance and pushing dynamically in the ad array
-            // if(title != '' && author != '' && subject != '' && isNaN(price) && image != '')
             ad.push({ x: new Books(title, author, subject, price, src) }); // passing specific url for image upload, img must be at that location
             document.getElementById("books").className = "tab-pane fade in active"; // activate books tab
             document.getElementById("form").className = "tab-pane fade"; // deactivate form tab  
@@ -242,9 +193,8 @@ function pushAd() {
                 '</div>'; // creating new panel with title and content for book 
             document.getElementById("p3").innerHTML += showBook_1; // "all" tab page 3, id="p3"
             document.getElementById("books").innerHTML += showBook_1;
-            // deactivating the nav bar's POST AD button
-            document.getElementById("button").className = '';
-            document.getElementById("bTab").className = 'active';
+            document.getElementById("button").className = ''; // deactivating the nav bar's POST AD button
+            document.getElementById("bTab").className = 'active'; // activating the books tab
             break;
         }
         case 'car': {
@@ -282,8 +232,8 @@ function pushAd() {
                 '</div>'; // creating new panel with title and content for car
             document.getElementById("p3").innerHTML += showCar_1; // "all" tab page 3, id="p3"
             document.getElementById("cars").innerHTML += showCar_1;
-            // deactivating the nav bar's POST AD button
-            document.getElementById("button").className = '';
+            document.getElementById("button").className = ''; // deactivating the nav bar's POST AD button
+            document.getElementById("cTab").className = 'active'; //activating the cars tab
             break;
         }
         case 'mobile': {
@@ -320,13 +270,15 @@ function pushAd() {
                 '</div>'; // creating new panel with title and content for mobile
             document.getElementById("p3").innerHTML += showMobile_1; // "all" tab page 3, id="p3"
             document.getElementById("mobiles").innerHTML += showMobile_1;
-            // deactivating the nav bar's POST AD button
-            document.getElementById("button").className = '';
+            document.getElementById("button").className = ''; // deactivating the nav bar's POST AD button
+            document.getElementById("mTab").className = 'active'; //activating the mobiles tab
             break;
         }
         default: {
+            alert("Error! select a proper category"); // ni pohnchenge yhn
         }
     } // </switch>
+    // hiding all form category divs
     document.getElementById("book").className = "hidden";
     document.getElementById("car").className = "hidden";
     document.getElementById("mobile").className = "hidden";
