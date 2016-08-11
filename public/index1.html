@@ -42,17 +42,17 @@
                         <img src="Images/all.png" alt="all" class="img-responsive center-block" />
                     </a>
                 </li>
-                <li role="presentation">
+                <li role="presentation" id="bTab">
                     <a href="#books" aria-controls="books" role="tab" data-toggle="tab">
                         <img src="Images/b1.png" alt="books" class="img-responsive center-block" />
                     </a>
                 </li>
-                <li role="presentation">
+                <li role="presentation" id="cTab">
                     <a href="#cars" aria-controls="cars" role="tab" data-toggle="tab">
                         <img src="Images/c6.png" alt="cars" class="img-responsive center-block" />
                     </a>
                 </li>
-                <li role="presentation">
+                <li role="presentation" id="mTab">
                     <a href="#mobiles" aria-controls="mobiles" role="tab" data-toggle="tab">
                        <img src="Images/m1.png" alt="mobiles" class="img-responsive center-block" />
                     </a>
@@ -111,7 +111,7 @@
                             <input type="number" name="contactNum" id="contact number" placeholder="Contact Number" />
             <br /><br />
                             <label for="category" class="sr-only"> Select Category </label>
-                            <select id="category" required oninput="checkCategory();">
+                            <select id="category" oninput="checkCategory();">
                                 <option value="null" selected> Select Category </option>
                                 <option value="book"> Book </option>
                                 <option value="car"> Car </option>
@@ -182,7 +182,7 @@
             <br /><br />
                         </div>
                         <label for="post" class="sr-only"> Post </label>
-                        <button type="submit" id="post" class="btn btn-primary btn-block" onclick="pushAd();"> Post My Ad </button>
+                        <button type="button" id="post" class="btn btn-primary btn-block" onclick="validateForm();"> Publish Ad </button>
             <br /><br />
                     </form> <!-- /form -->
                 </div> <!-- /#form tab -->

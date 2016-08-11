@@ -14,10 +14,11 @@ class Books extends Ads{
     title : string;
     author : string;
     subject : string;
+    //img : string = "Images/b1.png"; //y working not???? i want to have img as an optional param having a default value 
     
     // constructor automatically assigns the argument values to class attributes whenever a new instance is generated
     constructor(titleOfBook: string, authorOfBook: string, subjectOfBook: string, priceOfBook: number, img: string) {
-        super(priceOfBook, img);
+        super(priceOfBook, img); 
         this.title = titleOfBook;
         this.author = authorOfBook;
         this.subject = subjectOfBook;
@@ -90,7 +91,7 @@ var ad : any[] = [ // hard coded array for ad listings
 //alert(ad[4].x instanceof Books); //true 
 //alert(ad[0].x.cName); // yupieeeeee i got it !! :D className mil gya i.e. Books
 
-function fieldsEmptied(): void { // setting all form fields empty when button PostAd is clicked
+function fieldsEmptied(): void { // setting all form fields empty when nav bar's button PostAd is clicked
     let inputs = document.getElementsByTagName("input");
     for(let i = 0; i < inputs.length; i++) {
         (<HTMLInputElement>inputs[i]).value = '';
@@ -106,66 +107,18 @@ function checkCategory(): void { // setting and removing the required attribute 
                 document.getElementById("book").className = "show";
                 document.getElementById("car").className = "hidden";
                 document.getElementById("mobile").className = "hidden";
-
-                // setting required attribute to all input fields of book
-                let bInputs: any = document.getElementById("book").getElementsByTagName("input");
-                for(let i = 0; i < bInputs.length; i++) {
-                    bInputs[i].setAttribute("required", "required");
-                }
-                // removing required attribute from all input fields of car
-                let cInputs: any = document.getElementById("car").getElementsByTagName("input");
-                for(let i = 0; i < cInputs.length ; i++) {
-                    cInputs[i].removeAttribute("required");
-                }
-                // removing required attribute from all input fields of mobile              
-                let mInputs: any = document.getElementById("mobile").getElementsByTagName("input");
-                for(let i = 0; i < mInputs.length ; i++) {
-                    mInputs[i].removeAttribute("required");
-                }
                 break;
             }
             case 'car': { // show car and hide others
                 document.getElementById("car").className = "show";
                 document.getElementById("book").className = "hidden";
                 document.getElementById("mobile").className = "hidden";
-
-                // setting required attribute to all input fields of car
-                let cInputs: any = document.getElementById("car").getElementsByTagName("input");
-                for(let i = 0; i < cInputs.length; i++) {
-                    cInputs[i].setAttribute("required", "required");
-                }
-                // removing required attribute from all input fields of book
-                let bInputs: any = document.getElementById("book").getElementsByTagName("input");
-                for(let i = 0; i < bInputs.length ; i++) {
-                    bInputs[i].removeAttribute("required");
-                }
-                // removing required attribute from all input fields of mobile              
-                let mInputs: any = document.getElementById("mobile").getElementsByTagName("input");
-                for(let i = 0; i < mInputs.length ; i++) {
-                    mInputs[i].removeAttribute("required");
-                }
                 break;
             }
             case 'mobile': { // show mobile and hide others
                 document.getElementById("mobile").className = "show";
                 document.getElementById("book").className = "hidden";
                 document.getElementById("car").className = "hidden";
-                
-                // setting required attribute to all input fields of mobile
-                let mInputs: any = document.getElementById("mobile").getElementsByTagName("input");
-                for(let i = 0; i < mInputs.length; i++) {
-                    mInputs[i].setAttribute("required", "required");
-                }
-                // removing required attribute from all input fields of book
-                let bInputs: any = document.getElementById("book").getElementsByTagName("input");
-                for(let i = 0; i < bInputs.length ; i++) {
-                    bInputs[i].removeAttribute("required");
-                }
-                // removing required attribute from all input fields of car
-                let cInputs: any = document.getElementById("car").getElementsByTagName("input");
-                for(let i = 0; i < cInputs.length ; i++) {
-                    cInputs[i].removeAttribute("required");
-                }
                 break;
             }
             default: { //throwing error
@@ -174,6 +127,52 @@ function checkCategory(): void { // setting and removing the required attribute 
         }
     }
     
+    function isNotEmpty(id: string): boolean { // check whether an input field is empty
+        let check: HTMLInputElement = document.getElementById(id) as HTMLInputElement;
+        if(check.value.toString().length === 0) {
+            alert("This is a required field!"); //throw error
+            check.focus(); // set focus on the field
+        }
+        else {
+            return true;
+        }
+    }
+
+function validateForm(): void { //validates form and calls pushAd function if all goes right
+        var cat: string = (document.getElementById("category") as HTMLInputElement).value;
+        switch(cat) {
+            case "book": {
+                if(isNotEmpty("username") && isNotEmpty("email")) { // if main form is filled
+                    if(isNotEmpty("Btitle") && isNotEmpty("author") && isNotEmpty("subject") && isNotEmpty("Bprice")) { // check for book's div
+                        pushAd();
+                    }
+                }
+            }
+            break;
+            case "car": { 
+                if(isNotEmpty("username") && isNotEmpty("email")) { // if main form is filled
+                    if(isNotEmpty("name") && isNotEmpty("Ccompany") && isNotEmpty("Cmodel") && isNotEmpty("engine") && isNotEmpty("Ccolor") && isNotEmpty("Cprice")) { // check for car's div
+                        pushAd();
+                    }
+                }
+            }
+            break;
+            case "mobile": {
+                if(isNotEmpty("username") && isNotEmpty("email")) { // if main form is filled
+                    if(isNotEmpty("Mmodel") && isNotEmpty("Mcompany") && isNotEmpty("Mcolor") && isNotEmpty("screensize") && isNotEmpty("Mprice")) { // check for mobile's div
+                        pushAd();
+                    }
+                }
+            }
+            break;
+            default: {
+                if(isNotEmpty("username") && isNotEmpty("email")) { // if main form is filled
+                    alert("Select a category please!"); // throw error
+                }
+            } 
+        } // </switch>
+}
+
     function pushAd(): void { // pushing the posted ads in array and displaying in appropriate tab    
 
         // selected ad category
@@ -192,7 +191,6 @@ function checkCategory(): void { // setting and removing the required attribute 
                 let src : string = "C:/Users/Public/Pictures/" + filename; // the img u hv 2 upload should be placed at the specific url
 
                 //creating new Books instance and pushing dynamically in the ad array
-                // if(title != '' && author != '' && subject != '' && isNaN(price) && image != '')
                 ad.push({x: new Books(title, author, subject, price, src)}); // passing specific url for image upload, img must be at that location
     
                 document.getElementById("books").className = "tab-pane fade in active"; // activate books tab
@@ -220,6 +218,8 @@ function checkCategory(): void { // setting and removing the required attribute 
                 document.getElementById("p3").innerHTML += showBook; // "all" tab page 3, id="p3"
                 document.getElementById("books").innerHTML += showBook;
                 
+                document.getElementById("button").className = ''; // deactivating the nav bar's POST AD button
+                document.getElementById("bTab").className = 'active'; // activating the books tab
                 break;
             }
             case 'car': {
@@ -262,6 +262,8 @@ function checkCategory(): void { // setting and removing the required attribute 
                 document.getElementById("p3").innerHTML += showCar; // "all" tab page 3, id="p3"
                 document.getElementById("cars").innerHTML += showCar;
 
+                document.getElementById("button").className = ''; // deactivating the nav bar's POST AD button
+                document.getElementById("cTab").className = 'active'; //activating the cars tab
                 break;
             }
             case 'mobile': {
@@ -303,12 +305,18 @@ function checkCategory(): void { // setting and removing the required attribute 
                 document.getElementById("p3").innerHTML += showMobile; // "all" tab page 3, id="p3"
                 document.getElementById("mobiles").innerHTML += showMobile;
 
+                document.getElementById("button").className = ''; // deactivating the nav bar's POST AD button
+                document.getElementById("mTab").className = 'active'; //activating the mobiles tab
                 break;
             }
             default: {
-                // alert("Error! select a proper category");
+                alert("Error! select a proper category"); // ni pohnchenge yhn
             }
         } // </switch>
+        // hiding all form category divs
+        document.getElementById("book").className = "hidden";
+        document.getElementById("car").className = "hidden";
+        document.getElementById("mobile").className = "hidden";
     }
 
 // display the All tab
