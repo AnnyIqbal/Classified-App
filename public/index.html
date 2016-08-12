@@ -111,7 +111,8 @@
                             <input type="number" name="contactNum" id="contact number" placeholder="Contact Number" />
             <br /><br />
                             <label for="category" class="sr-only"> Select Category </label>
-                            <select id="category" oninput="checkCategory();">
+                            <select id="category" onchange="checkCategory();" >
+                                <!--onkeypress="checkCategory();" oninput="checkCategory();">-->
                                 <option value="null" selected> Select Category </option>
                                 <option value="book"> Book </option>
                                 <option value="car"> Car </option>
