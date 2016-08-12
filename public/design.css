@@ -55,13 +55,10 @@ input, select {
     width: 100%;
     padding: 10px;
 }
-/*#post:hover {
+#post:hover {
     text-transform: uppercase;
     font-weight: bolder;
-    border: 2px solid rgb(51,122,183);
-    color: rgb(51,122,183);
-    background-color: white;
-}*/
+}
 
 @media screen and (max-width: 760px) {    /* for small screens<768px, jb screen ziada se ziada 767px ki ho tb */
     body {
@@ -74,6 +71,13 @@ input, select {
     }
     form {
         width: 100%;
+    }
+    #button {
+        margin-left: 0 !important;
+    }
+    #button a img {
+        height: 25px;
+        width: 50px;
     }
 }
 @media screen and (min-width: 1000px) { /* for large screens, >1000px */
